@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
+.Home {
+	text-align: center;
+}
+.navBar {
+	position: sticky;
+	top: 0px;
+	z-index: 1px;
+}
+
+#linksList {
+	display: none;
+	justify-content: center;
+	background-color: white;
+	font-size: 30px;
+	padding: 10px;
+}
+.mobileNavBar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: black;
+}
+
+.mobileNavBar i {
+	color: white;
+}
+.navAbout {
+	text-decoration: none;
+	color: black;
+}
+.appTitle {
+	text-decoration: none;
+	color: white;
+	font-size: 48px;
+	padding: 10px;
+	font-family: "Orbitron", sans-serif;
+}
+.navIcon {
+	font-size: 46px;
+	padding: 7px 10px;
+}

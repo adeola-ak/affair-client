@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lateef&display=swap");
+
+.Home {
+	text-align: center;
+}
+
+.app-name {
+	font-family: "Orbitron", sans-serif;
+	font-size: 250px;
+}
+
+.welcome-buttons {
+	font-family: "Lateef", cursive;
+	font-size: 40px;
+	margin-left: 5px;
+	border: none;
+}
