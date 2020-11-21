@@ -56,7 +56,15 @@ const LoginForm = ({ handleAuthClick, handleLogin, userData }) => {
 					<p>{item.item_type}</p>
 					<p>{item.subtype}</p>
 					<p>{item.season}</p>
-					<button>delete</button>
+					<button>
+						<i class="far fa-edit"></i>
+					</button>
+					<button>
+						<i class="far fa-heart"></i>
+					</button>
+					<button>
+						<i class="far fa-trash-alt"></i>
+					</button>
 				</div>
 			);
 		});
@@ -74,6 +82,7 @@ const LoginForm = ({ handleAuthClick, handleLogin, userData }) => {
 
 	return (
 		<div>
+			<i class="far fa-plus-square"></i>{" "}
 			<div style={formDivStyle}>
 				<h1>Log In</h1>
 				<form className="ui form" onSubmit={handleSubmit}>

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lateef&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
 
 .Home {
 	text-align: center;
@@ -11,7 +12,9 @@
 }
 
 .welcome-buttons {
-	font-family: "Lateef", cursive;
+	/* font-family: "Lateef", cursive; */
+	font-family: "Fira Mono", monospace;
+
 	font-size: 40px;
 	margin-left: 5px;
 	border: none;

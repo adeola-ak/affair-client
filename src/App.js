@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Main from "./components/Main/Main";
 import Nav from "./components/Nav/Nav";
+import Footer from "./components/Footer/Footer";
 
 function App() {
 	const [user, setUser] = useState({});
@@ -52,6 +53,7 @@ function App() {
 				setUserData={setUserData}
 				handleAuthClick={handleAuthClick}
 			/>
+			<Footer />
 		</>
 	);
 }
