@@ -5,7 +5,7 @@ import Home from "../Home/Home";
 import NewUser from "../NewUser/NewUser";
 import Closet from "../Closet/Closet";
 
-function Main({ setUser, setUserData, handleAuthClick }) {
+function Main({ setUser, setUserData, handleAuthClick, userData }) {
 	const handleLogin = (user) => {
 		setUser(user);
 	};
@@ -19,6 +19,8 @@ function Main({ setUser, setUserData, handleAuthClick }) {
 				<Login
 					handleLogin={handleLogin}
 					handleAuthClick={handleAuthClick}
+					setUserData={setUserData}
+					userData={userData}
 				/>
 			</Route>
 

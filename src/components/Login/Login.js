@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const LoginForm = ({ handleLogin, userData }) => {
+const LoginForm = ({ handleAuthClick, handleLogin, userData }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -11,20 +11,6 @@ const LoginForm = ({ handleLogin, userData }) => {
 
 	const handlePasswordChange = (event) => {
 		setPassword(event.target.value);
-	};
-
-	const handleAuthClick = () => {
-		const token = localStorage.getItem("token");
-		fetch(`http://localhost:3000/items`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		})
-			.then((resp) => resp.json())
-			.then((data) => {
-				console.log(data);
-				setUserData(data);
-			});
 	};
 
 	const handleSubmit = (event) => {
@@ -51,19 +37,26 @@ const LoginForm = ({ handleLogin, userData }) => {
 		setPassword("");
 	};
 
+	const closetItemsStyle = {
+		height: "10em",
+	};
 	let closetItems = "";
 	if (userData) {
 		closetItems = userData.map((item, index) => {
-			console.log("ITS HERE");
 			return (
 				<div key={index}>
-					<img src={item.url} alt={item.index} />
+					<img
+						style={closetItemsStyle}
+						src={item.url}
+						alt={item.index}
+					/>
 					<p>{item.designer}</p>
 					<p>{item.description}</p>
 					<p>{item.color}</p>
 					<p>{item.item_type}</p>
 					<p>{item.subtype}</p>
 					<p>{item.season}</p>
+					<button>delete</button>
 				</div>
 			);
 		});
@@ -110,6 +103,7 @@ const LoginForm = ({ handleLogin, userData }) => {
 					{/* </Link> */}
 				</form>
 			</div>
+			{closetItems}
 		</div>
 	);
 };

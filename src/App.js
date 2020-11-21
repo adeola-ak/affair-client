@@ -23,9 +23,9 @@ function App() {
 		}
 	}, []);
 
-	// const handleLogin = (user) => {
-	// 	setUser(user);
-	// };
+	const handleLogin = (user) => {
+		setUser(user);
+	};
 
 	const handleAuthClick = () => {
 		const token = localStorage.getItem("token");
@@ -47,6 +47,7 @@ function App() {
 		<>
 			<Nav />
 			<Main
+				userData={userData}
 				setUser={setUser}
 				setUserData={setUserData}
 				handleAuthClick={handleAuthClick}
