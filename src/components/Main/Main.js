@@ -9,7 +9,7 @@ function Main() {
 	const [user, setUser] = useState({});
 	const [userData, setUserData] = useState("");
 
-	const autoLogin = () => {
+	useEffect(() => {
 		const token = localStorage.getItem("token");
 		if (token) {
 			fetch("http://localhost:3000/auto_login", {
@@ -23,31 +23,13 @@ function Main() {
 					// console.log(data)
 				});
 		}
-	};
-
-	useEffect(() => autoLogin(), []);
-
-	// useEffect(() => {
-	// 	const token = localStorage.getItem("token");
-	// 	if (token) {
-	// 		fetch("http://localhost:3000/auto_login", {
-	// 			headers: {
-	// 				Authorization: `Bearer ${token}`,
-	// 			},
-	// 		})
-	// 			.then((resp) => resp.json())
-	// 			.then((data) => {
-	// 				setUser(data);
-	// 				// console.log(data)
-	// 			});
-	// 	}
-	// }, []);
+	}, []);
 
 	const handleLogin = (user) => {
 		setUser(user);
 	};
 
-	const handleAuthClick = () => {
+	const handleAuth = () => {
 		const token = localStorage.getItem("token");
 		fetch("http://localhost:3000/items", {
 			headers: {
@@ -72,7 +54,7 @@ function Main() {
 			<Route path="/login">
 				<Login
 					handleLogin={handleLogin}
-					handleAuthClick={handleAuthClick}
+					handleAuth={handleAuth}
 					userData={userData}
 					setUserData={setUserData}
 				/>
@@ -84,7 +66,7 @@ function Main() {
 
 			<Route path="/items/:id">
 				<Closet
-					handleAuthClick={handleAuthClick}
+					handleAuth={handleAuth}
 					user={user}
 					setUser={setUser}
 					userData={userData}
