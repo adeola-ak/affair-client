@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "./Closet.css";
 import DarkMode from "../DarkMode/DarkMode";
+import axios from "axios";
 
-const Closet = ({ user, userData, handleAuth }) => {
+const Closet = ({ user, userItems, handleAuth }) => {
+	const [item, setItem] = useState([]);
+
 	useEffect(() => handleAuth(), []);
 	console.log(user);
-	console.log(userData);
+	console.log(userItems);
 
 	const closetItemsStyle = {
 		height: "8em",
 	};
 
+	const handleDelete = (userItems) => {
+		axios({
+			url: `http://localhost:3000/items/${item.id}`,
+			method: "DELETE",
+		});
+		handleAuth();
+	};
+
 	let closetItems = "";
-	if (userData) {
-		closetItems = userData.map((item, index) => {
+	if (userItems) {
+		closetItems = userItems.map((item, index) => {
 			return (
 				<div className="item-card" key={index}>
 					<img
@@ -33,8 +44,9 @@ const Closet = ({ user, userData, handleAuth }) => {
 					<button>
 						<i className="far fa-heart"></i>
 					</button>
-					<button>
-						<i className="far fa-trash-alt"></i>
+
+					<button onClick={() => handleDelete(userItems)}>
+						<i class="fas fa-trash-alt"></i>
 					</button>
 				</div>
 			);
@@ -47,7 +59,7 @@ const Closet = ({ user, userData, handleAuth }) => {
 
 			<div>
 				<i className="far fa-plus-square fa-2x"></i>
-				<h2>closet</h2>
+				<h2>{user.username}'s Closet</h2>
 				<div className="item-container">{closetItems}</div>
 			</div>
 		</>

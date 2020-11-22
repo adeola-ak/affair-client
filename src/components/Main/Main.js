@@ -69,7 +69,7 @@ function Main() {
 					handleAuth={handleAuth}
 					user={user}
 					setUser={setUser}
-					userData={userData}
+					userItems={userData}
 					setUserData={setUserData}
 				/>
 			</Route>
