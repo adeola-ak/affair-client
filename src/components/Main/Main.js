@@ -1,14 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Login from "../Login/Login";
 import Home from "../Home/Home";
 import NewUser from "../NewUser/NewUser";
 import Closet from "../Closet/Closet";
 
-function Main({ setUser, setUserData, handleAuthClick, userData }) {
+function Main() {
+	const [user, setUser] = useState({});
+	const [userData, setUserData] = useState("");
+
+	const autoLogin = () => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			fetch("http://localhost:3000/auto_login", {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
+				.then((resp) => resp.json())
+				.then((data) => {
+					setUser(data);
+					// console.log(data)
+				});
+		}
+	};
+
+	useEffect(() => autoLogin(), []);
+
+	// useEffect(() => {
+	// 	const token = localStorage.getItem("token");
+	// 	if (token) {
+	// 		fetch("http://localhost:3000/auto_login", {
+	// 			headers: {
+	// 				Authorization: `Bearer ${token}`,
+	// 			},
+	// 		})
+	// 			.then((resp) => resp.json())
+	// 			.then((data) => {
+	// 				setUser(data);
+	// 				// console.log(data)
+	// 			});
+	// 	}
+	// }, []);
+
 	const handleLogin = (user) => {
 		setUser(user);
 	};
+
+	const handleAuthClick = () => {
+		const token = localStorage.getItem("token");
+		fetch("http://localhost:3000/items", {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		})
+			.then((resp) => resp.json())
+			.then((data) => {
+				console.log(data);
+				setUserData(data);
+			});
+	};
+
+	console.log(user);
+
 	return (
 		<Switch>
 			<Route exact path="/">
@@ -19,8 +73,8 @@ function Main({ setUser, setUserData, handleAuthClick, userData }) {
 				<Login
 					handleLogin={handleLogin}
 					handleAuthClick={handleAuthClick}
-					setUserData={setUserData}
 					userData={userData}
+					setUserData={setUserData}
 				/>
 			</Route>
 
@@ -29,7 +83,13 @@ function Main({ setUser, setUserData, handleAuthClick, userData }) {
 			</Route>
 
 			<Route path="/items/:id">
-				<Closet setUser={setUser} setUserData={setUserData} />
+				<Closet
+					handleAuthClick={handleAuthClick}
+					user={user}
+					setUser={setUser}
+					userData={userData}
+					setUserData={setUserData}
+				/>
 			</Route>
 		</Switch>
 	);

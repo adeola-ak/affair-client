@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const LoginForm = ({ handleAuthClick, handleLogin, userData }) => {
+const Login = ({ handleAuthClick, handleLogin, userData, setUserData }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -38,8 +38,9 @@ const LoginForm = ({ handleAuthClick, handleLogin, userData }) => {
 	};
 
 	const closetItemsStyle = {
-		height: "10em",
+		height: "8em",
 	};
+
 	let closetItems = "";
 	if (userData) {
 		closetItems = userData.map((item, index) => {
@@ -57,13 +58,13 @@ const LoginForm = ({ handleAuthClick, handleLogin, userData }) => {
 					<p>{item.subtype}</p>
 					<p>{item.season}</p>
 					<button>
-						<i class="far fa-edit"></i>
+						<i className="far fa-edit"></i>
 					</button>
 					<button>
-						<i class="far fa-heart"></i>
+						<i className="far fa-heart"></i>
 					</button>
 					<button>
-						<i class="far fa-trash-alt"></i>
+						<i className="far fa-trash-alt"></i>
 					</button>
 				</div>
 			);
@@ -82,7 +83,7 @@ const LoginForm = ({ handleAuthClick, handleLogin, userData }) => {
 
 	return (
 		<div>
-			<i class="far fa-plus-square"></i>{" "}
+			<i className="far fa-plus-square"></i>{" "}
 			<div style={formDivStyle}>
 				<h1>Log In</h1>
 				<form className="ui form" onSubmit={handleSubmit}>
@@ -105,11 +106,11 @@ const LoginForm = ({ handleAuthClick, handleLogin, userData }) => {
 						/>
 					</div>
 
-					{/* <Link to="/items/:id"> */}
-					<button className="ui button" type="submit">
-						Submit
-					</button>
-					{/* </Link> */}
+					<Link to="/items/:id">
+						<button className="ui button" type="submit">
+							Submit
+						</button>
+					</Link>
 				</form>
 			</div>
 			{closetItems}
@@ -117,4 +118,4 @@ const LoginForm = ({ handleAuthClick, handleLogin, userData }) => {
 	);
 };
 
-export default LoginForm;
+export default Login;
