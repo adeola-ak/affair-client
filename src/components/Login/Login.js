@@ -45,7 +45,6 @@ const Login = ({ handleAuthClick, handleLogin, userData, setUserData }) => {
 
 	return (
 		<div>
-			<i className="far fa-plus-square"></i>{" "}
 			<div style={formDivStyle}>
 				<h1>Log In</h1>
 				<form className="ui form" onSubmit={handleSubmit}>

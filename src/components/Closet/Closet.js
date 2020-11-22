@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "./Closet.css";
+import DarkMode from "../DarkMode/DarkMode";
 
 const Closet = ({ user, userData, handleAuth }) => {
 	useEffect(() => handleAuth(), []);
@@ -13,7 +15,7 @@ const Closet = ({ user, userData, handleAuth }) => {
 	if (userData) {
 		closetItems = userData.map((item, index) => {
 			return (
-				<div key={index}>
+				<div className="item-card" key={index}>
 					<img
 						style={closetItemsStyle}
 						src={item.url}
@@ -39,7 +41,17 @@ const Closet = ({ user, userData, handleAuth }) => {
 		});
 	}
 
-	return [closetItems];
+	return (
+		<>
+			<DarkMode />
+
+			<div>
+				<i className="far fa-plus-square fa-2x"></i>
+				<h2>closet</h2>
+				<div className="item-container">{closetItems}</div>
+			</div>
+		</>
+	);
 };
 
 export default Closet;
