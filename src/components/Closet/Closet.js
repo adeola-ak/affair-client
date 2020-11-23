@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Closet.css";
 import DarkMode from "../DarkMode/DarkMode";
 import axios from "axios";
+import TheModal from "../Modal/Modal";
+import ItemForm from "../ItemForm/ItemForm";
 
 const Closet = ({ user, closet, handleAuth }) => {
 	const [item, setItem] = useState([]);
@@ -14,6 +16,19 @@ const Closet = ({ user, closet, handleAuth }) => {
 
 	const closetItemsStyle = {
 		height: "8em",
+	};
+
+	const handleCreate = (id) => {
+		axios({
+			url: `http://localhost:3000/items/${id}`,
+			method: "POST",
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(id),
+		});
+		handleAuth();
+		console.log("item created");
 	};
 
 	const handleUpdate = (id) => {
@@ -75,11 +90,15 @@ const Closet = ({ user, closet, handleAuth }) => {
 	return (
 		<>
 			<DarkMode />
-
+			<TheModal />
 			<div>
-				<i className="far fa-plus-square fa-2x"></i>
+				<i
+					className="far fa-plus-square fa-2x"
+					onClick={() => handleCreate(item.id)}
+				></i>
 				<h2>{user.username}'s Closet</h2>
 				<div className="item-container">{closetItems}</div>
+				<ItemForm />
 			</div>
 		</>
 	);

@@ -4,6 +4,7 @@ import Login from "../Login/Login";
 import Home from "../Home/Home";
 import NewUser from "../NewUser/NewUser";
 import Closet from "../Closet/Closet";
+import ItemForm from "../ItemForm/ItemForm";
 
 function Main() {
 	const [user, setUser] = useState({});
@@ -68,6 +69,15 @@ function Main() {
 					closet={closet}
 					setCloset={setCloset}
 					// id={props.match.params.id}
+				/>
+			</Route>
+
+			<Route path="/newitem">
+				<ItemForm
+					handleLogin={handleLogin}
+					handleAuth={handleAuth}
+					user={user}
+					setUser={setUser}
 				/>
 			</Route>
 		</Switch>

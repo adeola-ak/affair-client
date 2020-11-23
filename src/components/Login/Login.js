@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Login = ({ handleAuthClick, handleLogin, userData, setUserData }) => {
+const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -30,8 +30,10 @@ const Login = ({ handleAuthClick, handleLogin, userData, setUserData }) => {
 			.then((data) => {
 				localStorage.setItem("token", data.token);
 				handleLogin(data.user);
+				// handleLogin(user);
+				console.log(data.user);
 			})
-			.then(() => handleAuthClick())
+			.then(() => handleAuth())
 			.then(() => console.log(userData));
 		setUsername("");
 		setPassword("");
