@@ -3,28 +3,47 @@ import "./Closet.css";
 import DarkMode from "../DarkMode/DarkMode";
 import axios from "axios";
 
-const Closet = ({ user, userItems, handleAuth }) => {
+const Closet = ({ user, closet, handleAuth }) => {
 	const [item, setItem] = useState([]);
 
 	useEffect(() => handleAuth(), []);
 	console.log(user);
-	console.log(userItems);
+	console.log(closet);
+
+	const token = localStorage.getItem("token");
 
 	const closetItemsStyle = {
 		height: "8em",
 	};
 
-	const handleDelete = (userItems) => {
+	const handleUpdate = (id) => {
 		axios({
-			url: `http://localhost:3000/items/${item.id}`,
-			method: "DELETE",
+			url: `http://localhost:3000/items/${id}`,
+			method: "PUT",
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(id),
 		});
 		handleAuth();
+		console.log("item updated");
+	};
+
+	const handleDelete = (id) => {
+		axios({
+			url: `http://localhost:3000/items/${id}`,
+			method: "DELETE",
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		handleAuth();
+		console.log("item deleted");
 	};
 
 	let closetItems = "";
-	if (userItems) {
-		closetItems = userItems.map((item, index) => {
+	if (closet) {
+		closetItems = closet.map((item, index) => {
 			return (
 				<div className="item-card" key={index}>
 					<img
@@ -38,14 +57,14 @@ const Closet = ({ user, userItems, handleAuth }) => {
 					<p>{item.item_type}</p>
 					<p>{item.subtype}</p>
 					<p>{item.season}</p>
-					<button>
-						<i className="far fa-edit"></i>
-					</button>
+
 					<button>
 						<i className="far fa-heart"></i>
 					</button>
-
-					<button onClick={() => handleDelete(userItems)}>
+					<button onClick={() => handleUpdate(item.id)}>
+						<i className="far fa-edit"></i>
+					</button>
+					<button onClick={() => handleDelete(item.id)}>
 						<i class="fas fa-trash-alt"></i>
 					</button>
 				</div>

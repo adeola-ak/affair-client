@@ -7,7 +7,7 @@ import Closet from "../Closet/Closet";
 
 function Main() {
 	const [user, setUser] = useState({});
-	const [userData, setUserData] = useState("");
+	const [closet, setCloset] = useState("");
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -39,7 +39,7 @@ function Main() {
 			.then((resp) => resp.json())
 			.then((data) => {
 				console.log(data);
-				setUserData(data);
+				setCloset(data);
 			});
 	};
 
@@ -52,12 +52,7 @@ function Main() {
 			</Route>
 
 			<Route path="/login">
-				<Login
-					handleLogin={handleLogin}
-					handleAuth={handleAuth}
-					userData={userData}
-					setUserData={setUserData}
-				/>
+				<Login handleLogin={handleLogin} handleAuth={handleAuth} />
 			</Route>
 
 			<Route path="/new-user">
@@ -66,11 +61,13 @@ function Main() {
 
 			<Route path="/items/:id">
 				<Closet
+					// {...routerprops}
 					handleAuth={handleAuth}
 					user={user}
 					setUser={setUser}
-					userItems={userData}
-					setUserData={setUserData}
+					closet={closet}
+					setCloset={setCloset}
+					// id={props.match.params.id}
 				/>
 			</Route>
 		</Switch>
