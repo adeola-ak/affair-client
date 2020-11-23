@@ -5,14 +5,23 @@ import axios from "axios";
 import TheModal from "../Modal/Modal";
 import ItemForm from "../ItemForm/ItemForm";
 
-const Closet = ({ user, closet, handleAuth }) => {
+const Closet = ({
+	user,
+	closet,
+	handleAuth,
+	// handleLogin,
+	setUser,
+	token,
+	setToken,
+}) => {
 	const [item, setItem] = useState([]);
 
 	useEffect(() => handleAuth(), []);
 	console.log(user);
 	console.log(closet);
+	console.log(token);
 
-	const token = localStorage.getItem("token");
+	// const token = localStorage.getItem("token");
 
 	const closetItemsStyle = {
 		height: "8em",
@@ -96,9 +105,16 @@ const Closet = ({ user, closet, handleAuth }) => {
 					className="far fa-plus-square fa-2x"
 					onClick={() => handleCreate(item.id)}
 				></i>
-				<h2>{user.username}'s Closet</h2>
+				{/* <h2>{user.username}'s Closet</h2> */}
 				<div className="item-container">{closetItems}</div>
-				<ItemForm />
+				<ItemForm
+					// handleLogin={handleLogin}
+					handleAuth={handleAuth}
+					user={user}
+					setUser={setUser}
+					token={token}
+					setToken={setToken}
+				/>
 			</div>
 		</>
 	);

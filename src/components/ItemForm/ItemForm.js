@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-const ItemForm = ({ handleLogin, handleAuth, user, setUser }) => {
-	console.log(user);
+const ItemForm = ({
+	// handleLogin,
+	handleAuth,
+	user,
+	setUser,
+	token,
+	setToken,
+}) => {
+	// console.log(user);
+	console.log(token);
 	const [designer, setDesigner] = useState("");
 	const [item_type, setItem_type] = useState("");
 	const [subtype, setSubtype] = useState("");
@@ -43,6 +51,7 @@ const ItemForm = ({ handleLogin, handleAuth, user, setUser }) => {
 			headers: {
 				"Content-Type": "application/json",
 				Accept: "application/json",
+				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify({
 				designer,
@@ -54,15 +63,7 @@ const ItemForm = ({ handleLogin, handleAuth, user, setUser }) => {
 				url,
 				favorite,
 			}),
-		})
-			.then((resp) => resp.json())
-			.then((data) => {
-				localStorage.setItem("token", data.token);
-				handleLogin(data.user);
-				console.log("logged in");
-			})
-			.then(() => handleAuth())
-			.then(() => console.log(user));
+		});
 		setDesigner("");
 		setItem_type("");
 		setSubtype("");
@@ -157,7 +158,8 @@ const ItemForm = ({ handleLogin, handleAuth, user, setUser }) => {
 					<input
 						value={favorite}
 						onChange={handleFavoriteChange}
-						type="checkbox"
+						// type="checkbox"
+						type="text"
 						placeholder="favorite"
 					/>
 				</div>
