@@ -6,6 +6,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import axios from "axios";
 
 const Modal = ({
 	token,
@@ -13,7 +14,8 @@ const Modal = ({
 	handleAuth,
 	click,
 	setClick,
-	handleUpdate,
+	createNew,
+	id,
 }) => {
 	console.log(token);
 	const [open, setOpen] = React.useState(false);
@@ -60,6 +62,32 @@ const Modal = ({
 		setOpen(false);
 	};
 
+	const handleUpdate = (event) => {
+		event.preventDefault();
+		console.log("handling update");
+		fetch(`http://localhost:3000/items/${id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({
+				designer,
+				item_type,
+				subtype,
+				description,
+				color,
+				season,
+				url,
+				favorite,
+			}),
+		});
+		handleAuth();
+		setClick();
+		console.log("item updated");
+	};
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		fetch("http://localhost:3000/items", {
@@ -100,23 +128,19 @@ const Modal = ({
 				variant="outlined"
 				color="primary"
 				onClick={handleClickOpen}
-			>
-				Add Items To Your Closet{" "}
-			</Button>
+			></Button>
 			<Dialog
-				// fullScreen={fullScreen}
 				open={open}
 				onClose={handleClose}
 				aria-labelledby="form-dialog-title"
-				onSubmit={handleSubmit}
 			>
-				<DialogTitle id="form-dialog-title">Add an Item</DialogTitle>
 				<DialogContent>
 					{/* <DialogContentText>
 						To subscribe to this website, please enter your email
 						address here. We will send updates occasionally.
 					</DialogContentText> */}
-					<form>
+
+					<form onSubmit={createNew ? handleSubmit : handleUpdate}>
 						<input
 							value={designer}
 							onChange={handleDesignerChange}
@@ -168,7 +192,7 @@ const Modal = ({
 						/>
 						<button
 							type="submit"
-							onSubmit={handleSubmit}
+							// onSubmit={handleSubmit}
 							onClick={handleClose}
 							color="primary"
 						>

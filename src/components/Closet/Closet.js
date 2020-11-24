@@ -3,7 +3,6 @@ import "./Closet.css";
 import DarkMode from "../DarkMode/DarkMode";
 import axios from "axios";
 import Modal from "../Modal/Modal";
-import EditModal from "../EditModal/EditModal";
 import Search from "../Search/Search";
 // import ItemForm from "../ItemForm/ItemForm";
 
@@ -102,13 +101,14 @@ const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 					)}
 					<button>
 						<i className="far fa-edit">
-							<EditModal
+							<Modal
 								handleAuth={handleAuth}
 								token={token}
 								setToken={setToken}
 								click={click}
 								setClick={setClick}
-								onSubmit={() => handleUpdate()}
+								createNew={false}
+								id={item.id}
 							/>
 						</i>
 					</button>
@@ -130,6 +130,7 @@ const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 				setToken={setToken}
 				click={click}
 				setClick={setClick}
+				createNew={true}
 			/>
 			<div>
 				<h2>{user.username}'s Closet</h2>

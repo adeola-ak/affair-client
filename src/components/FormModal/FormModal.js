@@ -7,7 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-const EditModal = ({
+const FormModal = ({
 	token,
 	setToken,
 	handleAuth,
@@ -100,18 +100,23 @@ const EditModal = ({
 				variant="outlined"
 				color="primary"
 				onClick={handleClickOpen}
-			></Button>
+			>
+				Add Items To Your Closet{" "}
+			</Button>
 			<Dialog
+				// fullScreen={fullScreen}
 				open={open}
 				onClose={handleClose}
 				aria-labelledby="form-dialog-title"
+				onSubmit={handleSubmit}
 			>
+				<DialogTitle id="form-dialog-title">Add an Item</DialogTitle>
 				<DialogContent>
 					{/* <DialogContentText>
 						To subscribe to this website, please enter your email
 						address here. We will send updates occasionally.
 					</DialogContentText> */}
-					<form onSubmit={handleSubmit}>
+					<form>
 						<input
 							value={designer}
 							onChange={handleDesignerChange}
@@ -163,7 +168,7 @@ const EditModal = ({
 						/>
 						<button
 							type="submit"
-							// onSubmit={handleSubmit}
+							onSubmit={handleSubmit}
 							onClick={handleClose}
 							color="primary"
 						>
@@ -176,4 +181,4 @@ const EditModal = ({
 	);
 };
 
-export default EditModal;
+export default FormModal;
