@@ -69,13 +69,13 @@ function Main() {
 				/>
 			</Route>
 
-			<Route path="/newitem">
+			{/* <Route path="/newitem">
 				<ItemForm
 					handleAuth={handleAuth}
 					token={token}
 					setToken={setToken}
 				/>
-			</Route>
+			</Route> */}
 		</Switch>
 	);
 }
