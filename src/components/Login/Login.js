@@ -29,8 +29,6 @@ const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
 			.then((resp) => resp.json())
 			.then((data) => {
 				localStorage.setItem("token", data.token);
-				// handleLogin(data.user);
-				// handleLogin(user);
 				console.log(userData);
 			})
 			.then(() => handleAuth())

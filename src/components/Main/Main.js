@@ -7,9 +7,9 @@ import Closet from "../Closet/Closet";
 import ItemForm from "../ItemForm/ItemForm";
 
 function Main() {
-	// const [user, setUser] = useState({});
 	const [closet, setCloset] = useState("");
 	const [token, setToken] = useState(localStorage.getItem("token"));
+	const [user, setUser] = useState("");
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -21,15 +21,12 @@ function Main() {
 			})
 				.then((resp) => resp.json())
 				.then((data) => {
-					// setUser(data);
-					console.log(data);
+					setUser(data);
+					console.log(data, "user info auto login");
+					console.log(token, "user token after login in");
 				});
 		}
 	}, []);
-
-	// const handleLogin = (user) => {
-	// 	setUser(user);
-	// };
 
 	const handleAuth = () => {
 		const token = localStorage.getItem("token");
@@ -40,12 +37,10 @@ function Main() {
 		})
 			.then((resp) => resp.json())
 			.then((data) => {
-				console.log(data);
+				console.log(data, "user data after successful log in");
 				setCloset(data);
 			});
 	};
-
-	// console.log(user);
 
 	return (
 		<Switch>
@@ -54,39 +49,29 @@ function Main() {
 			</Route>
 
 			<Route path="/login">
-				<Login
-					// handleLogin={handleLogin}
-					handleAuth={handleAuth}
-				/>
+				<Login handleAuth={handleAuth} />
 			</Route>
 
 			<Route path="/new-user">
-				<NewUser
-				// handleLogin={handleLogin}
-				/>
+				<NewUser />
 			</Route>
 
 			<Route path="/items/:id">
 				<Closet
 					// {...routerprops}
 					handleAuth={handleAuth}
-					// user={user}
-					// setUser={setUser}
 					closet={closet}
 					setCloset={setCloset}
-					// handleLogin={handleLogin}
 					token={token}
 					setToken={setToken}
+					user={user}
 					// id={props.match.params.id}
 				/>
 			</Route>
 
 			<Route path="/newitem">
 				<ItemForm
-					// handleLogin={handleLogin}
 					handleAuth={handleAuth}
-					// user={user}
-					// setUser={setUser}
 					token={token}
 					setToken={setToken}
 				/>

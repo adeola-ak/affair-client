@@ -1,6 +1,16 @@
-.footer {
+/* .footer {
 	color: brown;
 	text-align: center;
 	height: 50px;
 	margin-top: -50px;
+} */
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
 }

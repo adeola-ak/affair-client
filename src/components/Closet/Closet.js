@@ -2,26 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./Closet.css";
 import DarkMode from "../DarkMode/DarkMode";
 import axios from "axios";
-import TheModal from "../Modal/Modal";
-import ItemForm from "../ItemForm/ItemForm";
+import Modal from "../Modal/Modal";
+// import ItemForm from "../ItemForm/ItemForm";
 
-const Closet = ({
-	user,
-	closet,
-	handleAuth,
-	// handleLogin,
-	setUser,
-	token,
-	setToken,
-}) => {
+const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 	const [item, setItem] = useState([]);
+	const [click, setClick] = useState(false);
+	console.log(item);
 
-	useEffect(() => handleAuth(), []);
-	console.log(user);
+	useEffect(() => handleAuth(), [click]);
 	console.log(closet);
-	console.log(token);
-
-	// const token = localStorage.getItem("token");
 
 	const closetItemsStyle = {
 		height: "8em",
@@ -61,7 +51,7 @@ const Closet = ({
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		handleAuth();
+		setClick();
 		console.log("item deleted");
 	};
 
@@ -99,22 +89,23 @@ const Closet = ({
 	return (
 		<>
 			<DarkMode />
-			<TheModal />
+			<Modal
+				handleAuth={handleAuth}
+				token={token}
+				setToken={setToken}
+				click={click}
+				setClick={setClick}
+			/>
 			<div>
-				<i
-					className="far fa-plus-square fa-2x"
-					onClick={() => handleCreate(item.id)}
-				></i>
-				{/* <h2>{user.username}'s Closet</h2> */}
+				<h2>{user.username}'s Closet</h2>
 				<div className="item-container">{closetItems}</div>
-				<ItemForm
-					// handleLogin={handleLogin}
+				{/* <ItemForm
 					handleAuth={handleAuth}
-					user={user}
-					setUser={setUser}
 					token={token}
 					setToken={setToken}
-				/>
+					click={click}
+					setClick={setClick}
+				/> */}
 			</div>
 		</>
 	);
