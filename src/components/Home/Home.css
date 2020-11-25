@@ -1,14 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lateef&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway+Dots&display=swap");
 
 .Home {
 	text-align: center;
+	background-image: url("https://res.cloudinary.com/dusr8fbuo/image/upload/v1606334244/clem-onojeghuo-HpEDSZukJqk-unsplash_btqbro.jpg");
+	background-size: contain;
+	opacity: 0.8;
 }
 
 .app-name {
 	font-family: "Orbitron", sans-serif;
-	font-size: 250px;
+	/* font-family: "Raleway Dots", cursive; */
+	color: ;
+	font-size: 300px;
+	/* opacity: 0.5; */
 }
 
 .welcome-buttons {

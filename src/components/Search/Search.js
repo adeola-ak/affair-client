@@ -8,28 +8,6 @@ const Search = ({
 	inputTextHandler,
 }) => {
 	console.log(closet);
-	// const [searchInput, setSearchInput] = useState("");
-	// const [searchedItem, setSearchedItem] = useState(false)
-
-	// const inputTextHandler = (event) => {
-	// 	setSearchInput(event.target.value);
-	// };
-
-	// const handleInputSubmit = (event) => {
-	// 	event.prevent.default();
-	// 	// setSearchedItem(true)
-	// 	if (searchInput.length > 0) {
-	// 		setCloset(
-	// 			closet.filter(
-	// 				(item) =>
-	// 					item.description.toLowerCase() ===
-	// 					searchInput.toLowerCase()
-	// 			)
-	// 		);
-	// 	} else {
-	// 		setCloset(closet);
-	// 	}
-	// };
 
 	const BarStyling = {
 		width: "20rem",

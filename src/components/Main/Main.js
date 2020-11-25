@@ -4,7 +4,6 @@ import Login from "../Login/Login";
 import Home from "../Home/Home";
 import NewUser from "../NewUser/NewUser";
 import Closet from "../Closet/Closet";
-import ItemForm from "../ItemForm/ItemForm";
 import Search from "../Search/Search";
 
 function Main() {
@@ -103,6 +102,11 @@ function Main() {
 					setToken={setToken}
 					user={user}
 					// id={props.match.params.id}
+					closet={closet}
+					setCloset={setCloset}
+					handleInputSubmit={handleInputSubmit}
+					searchInput={searchInput}
+					inputTextHandler={inputTextHandler}
 				/>
 			</Route>
 

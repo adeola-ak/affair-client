@@ -4,6 +4,7 @@ import "./Footer.css";
 const Footer = () => {
 	return (
 		<div className="footer">
+			adeola
 			{/* <footer class="page-footer">
 				<div class="container">
 					<div class="row">

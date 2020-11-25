@@ -18,10 +18,17 @@ function Nav() {
 	};
 	return (
 		<div className="navBar">
-			<header className="mobileNavBar">
+			<header className="navBar">
 				<Link className="appTitle" to="/" onClick={handleClick}>
 					<div>affair</div>
 				</Link>
+				<Link className="navLink" to="/about" onClick={handleClick}>
+					<div>about</div>
+				</Link>
+				<Link className="navLink" to="/contact" onClick={handleClick}>
+					<div>contact</div>
+				</Link>
+
 				<div className="navIcon" onClick={handleClickBars}>
 					<i className="fas fa-bars"></i>
 				</div>

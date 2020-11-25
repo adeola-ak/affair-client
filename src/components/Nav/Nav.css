@@ -19,7 +19,7 @@
 	font-family: "Fira Mono", monospace;
 	font-size: 40px;
 }
-.mobileNavBar {
+.navBar {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -27,7 +27,7 @@
 	width: 100%;
 }
 
-.mobileNavBar i {
+.navBar i {
 	color: white;
 }
 .navAbout {
@@ -37,11 +37,16 @@
 .appTitle {
 	text-decoration: none;
 	color: white;
-	font-size: 48px;
+	font-size: 52px;
 	padding: 10px;
 	font-family: "Orbitron", sans-serif;
+}
+
+.navLink {
+	text-decoration: none;
 }
 .navIcon {
 	font-size: 46px;
 	padding: 7px 10px;
+	display: none;
 }

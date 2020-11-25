@@ -6,7 +6,17 @@ import Modal from "../Modal/Modal";
 import Search from "../Search/Search";
 // import ItemForm from "../ItemForm/ItemForm";
 
-const Closet = ({ closet, token, setToken, handleAuth, user }) => {
+const Closet = ({
+	closet,
+	token,
+	setToken,
+	handleAuth,
+	user,
+	handleInputSubmit,
+	searchInput,
+	inputTextHandler,
+	setCloset,
+}) => {
 	const [click, setClick] = useState(false);
 	const [favorite, setFavorite] = useState(false);
 
@@ -123,18 +133,19 @@ const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 
 	return (
 		<>
-			<DarkMode />
-			<Modal
-				handleAuth={handleAuth}
-				token={token}
-				setToken={setToken}
-				click={click}
-				setClick={setClick}
-				createNew={true}
-			/>
 			<div>
 				<h2>{user.username}'s Closet</h2>
-				<div></div>
+				<div>
+					<Modal
+						handleAuth={handleAuth}
+						token={token}
+						setToken={setToken}
+						click={click}
+						setClick={setClick}
+						createNew={true}
+					/>
+					<DarkMode />
+				</div>
 
 				<div className="item-container">{fullCloset}</div>
 				{/* <ItemForm
