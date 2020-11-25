@@ -26,7 +26,7 @@ const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 			},
 			body: JSON.stringify(id),
 		});
-		handleAuth();
+		// handleAuth();
 		setClick();
 		console.log("item updated");
 	};
@@ -39,9 +39,8 @@ const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 				Authorization: `Bearer ${token}`,
 			},
 		});
-		// setClick(!click);
-		handleAuth();
-
+		// handleAuth();
+		setClick();
 		console.log("item deleted");
 	};
 
@@ -54,7 +53,7 @@ const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 			},
 			data: { favorite: true },
 		});
-		handleAuth();
+		// handleAuth();
 		setFavorite(true);
 		console.log("item favorited");
 	};
@@ -68,13 +67,14 @@ const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 			},
 			data: { favorite: false },
 		});
-		handleAuth();
+		// handleAuth();
 		setFavorite(false);
 		console.log("item un-favorited");
 	};
-	let closetItems = "";
+
+	let fullCloset = "";
 	if (closet) {
-		closetItems = closet.map((item, index) => {
+		fullCloset = closet.map((item, index) => {
 			return (
 				<div className="item-card" key={index}>
 					<img
@@ -99,19 +99,19 @@ const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 							<i className="far fa-heart"></i>
 						</button>
 					)}
-					<button>
-						<i className="far fa-edit">
-							<Modal
-								handleAuth={handleAuth}
-								token={token}
-								setToken={setToken}
-								click={click}
-								setClick={setClick}
-								createNew={false}
-								id={item.id}
-							/>
-						</i>
-					</button>
+					{/* <button>
+						<i className="far fa-edit"> */}
+					<Modal
+						handleAuth={handleAuth}
+						token={token}
+						setToken={setToken}
+						click={click}
+						setClick={setClick}
+						createNew={false}
+						id={item.id}
+					/>
+					{/* </i>
+					</button> */}
 
 					<button onClick={() => handleDelete(item.id)}>
 						<i class="fas fa-trash-alt"></i>
@@ -134,10 +134,9 @@ const Closet = ({ closet, token, setToken, handleAuth, user }) => {
 			/>
 			<div>
 				<h2>{user.username}'s Closet</h2>
-				<di>
-					<Search />
-				</di>
-				<div className="item-container">{closetItems}</div>
+				<div></div>
+
+				<div className="item-container">{fullCloset}</div>
 				{/* <ItemForm
 					handleAuth={handleAuth}
 					token={token}

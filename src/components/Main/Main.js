@@ -5,11 +5,13 @@ import Home from "../Home/Home";
 import NewUser from "../NewUser/NewUser";
 import Closet from "../Closet/Closet";
 import ItemForm from "../ItemForm/ItemForm";
+import Search from "../Search/Search";
 
 function Main() {
 	const [closet, setCloset] = useState("");
 	const [token, setToken] = useState(localStorage.getItem("token"));
 	const [user, setUser] = useState("");
+	const [searchInput, setSearchInput] = useState("");
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -42,6 +44,34 @@ function Main() {
 			});
 	};
 
+	const inputTextHandler = (event) => {
+		// console.log(event.target.value);
+		setSearchInput(event.target.value);
+	};
+
+	// const closetSearch = async (searchInput) => {
+	// 	const filtered = closet.filter((item) => {
+	// 		return item.description.toLowerCase().includes(searchInput.toLowerCase())
+	// 	});
+	// 	setCloset(closet)
+
+	const handleInputSubmit = (event) => {
+		console.log("hello");
+		event.preventDefault();
+		if (searchInput.length > 0) {
+			setCloset(
+				closet.filter(
+					(item) =>
+						item.description.toLowerCase() ===
+						searchInput.toLowerCase()
+				)
+			);
+			console.log("submitted");
+		} else {
+			setCloset(closet);
+		}
+	};
+
 	return (
 		<Switch>
 			<Route exact path="/">
@@ -57,6 +87,13 @@ function Main() {
 			</Route>
 
 			<Route path="/items/:id">
+				<Search
+					closet={closet}
+					setCloset={setCloset}
+					handleInputSubmit={handleInputSubmit}
+					searchInput={searchInput}
+					inputTextHandler={inputTextHandler}
+				/>
 				<Closet
 					// {...routerprops}
 					handleAuth={handleAuth}

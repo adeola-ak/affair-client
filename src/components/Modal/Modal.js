@@ -124,16 +124,39 @@ const Modal = ({
 
 	return (
 		<div>
-			<Button
-				variant="outlined"
-				color="primary"
-				onClick={handleClickOpen}
-			></Button>
+			{createNew ? (
+				<Button
+					variant="outlined"
+					color="primary"
+					onClick={handleClickOpen}
+				>
+					Add an Item
+				</Button>
+			) : (
+				<Button
+					variant="outlined"
+					color="primary"
+					onClick={handleClickOpen}
+				>
+					Update Item
+				</Button>
+			)}
+
 			<Dialog
 				open={open}
 				onClose={handleClose}
 				aria-labelledby="form-dialog-title"
 			>
+				{createNew ? (
+					<DialogTitle id="form-dialog-title">
+						Add an Item
+					</DialogTitle>
+				) : (
+					<DialogTitle id="form-dialog-title">
+						Update Item
+					</DialogTitle>
+				)}
+
 				<DialogContent>
 					{/* <DialogContentText>
 						To subscribe to this website, please enter your email
@@ -151,7 +174,7 @@ const Modal = ({
 							value={item_type}
 							onChange={handleItem_typeChange}
 							type="text"
-							placeholder="item_type"
+							placeholder="item type"
 						/>
 						<input
 							value={subtype}
