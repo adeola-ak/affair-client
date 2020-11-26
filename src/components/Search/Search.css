@@ -1,4 +1,9 @@
 .greeting {
 	display: flex;
 	justify-content: space-around;
+	background-color: white;
+}
+
+#form {
+	background-color: white;
 }

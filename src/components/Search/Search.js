@@ -25,7 +25,7 @@ const Search = ({
 				<h2>{user.username}'s Closet</h2>
 				<DarkMode />
 			</div>
-			<form onSubmit={handleInputSubmit}>
+			<form id="form" onSubmit={handleInputSubmit}>
 				<input
 					style={BarStyling}
 					value={searchInput}

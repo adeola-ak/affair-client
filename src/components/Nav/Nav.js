@@ -50,6 +50,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import "./Nav.css";
 import MenuIcon from "@material-ui/icons/Menu";
+import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 
 const Nav = () => {
 	const [click, setClick] = useState(false);
@@ -82,10 +83,10 @@ const Nav = () => {
 						<a href="/blog">blog</a>
 					</li>
 					<li
-						className=" option mobile-option"
+						className="option mobile-option"
 						onClick={closeMobileMenu}
 					>
-						<a href="" className="sign-up">
+						<a href="/new-user" className="sign-up">
 							SIGN-UP
 						</a>
 					</li>
@@ -104,9 +105,18 @@ const Nav = () => {
 
 			<div className="mobile-menu" onClick={handleClick}>
 				{click ? (
-					<MenuIcon className="menu-icon" color="secondary" />
+					<MenuOpenIcon
+						className="menu-icon"
+						color="inherit"
+						fontSize="large"
+						color="inherit"
+					/>
 				) : (
-					<MenuIcon className="menu-icon" color="secondary" />
+					<MenuIcon
+						className="menu-icon"
+						color="inherit"
+						fontSize="large"
+					/>
 				)}
 			</div>
 		</div>

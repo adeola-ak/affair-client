@@ -1,4 +1,18 @@
 .clothes-container {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
 }
+
+/* .item-card {
+	flex: 1 0 200px;
+	max-width: 185px;
+	padding: 40px;
+	text-align: center;
+} */
+
+/* #closet {
+	background-color: white;
+	background-image: none;
+	height: 1500px;
+} */

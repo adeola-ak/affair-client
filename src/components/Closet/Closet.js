@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./Closet.css";
-import DarkMode from "../DarkMode/DarkMode";
 import axios from "axios";
 import Modal from "../Modal/Modal";
 // import ItemForm from "../ItemForm/ItemForm";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const Closet = ({
 	closet,
@@ -81,58 +88,105 @@ const Closet = ({
 		console.log("item un-favorited");
 	};
 
+	const useStyles = makeStyles({
+		root: {
+			maxWidth: 300,
+		},
+		media: {
+			height: 140,
+		},
+	});
+
+	const classes = useStyles();
+
 	let fullCloset = "";
 	if (closet) {
 		fullCloset = closet.map((item, index) => {
 			return (
-				<div className="item-card" key={index}>
-					<img
-						style={closetItemsStyle}
-						src={item.url}
-						alt={item.index}
-					/>
-					<p>{item.designer}</p>
-					<p>{item.description}</p>
-					<p>{item.color}</p>
-					<p>{item.item_type}</p>
-					<p>{item.subtype}</p>
-					<p>{item.season}</p>
-					<p>{item.favorite}</p>
+				<Card className={classes.root}>
+					<CardActionArea>
+						<img
+							className={classes.media}
+							src={item.url}
+							title="Contemplative Reptile"
+						/>
+						<CardContent>
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="h2"
+							>
+								Lizard
+							</Typography>
+							<Typography
+								variant="body2"
+								color="textSecondary"
+								component="p"
+							>
+								Lizards are a widespread group of squamate
+								reptiles, with over 6,000 species, ranging
+								across all continents except Antarctica
+							</Typography>
+						</CardContent>
+					</CardActionArea>
+					<CardActions>
+						<Button size="small" color="primary">
+							Share
+						</Button>
+						<Button size="small" color="primary">
+							Learn More
+						</Button>
+					</CardActions>
+				</Card>
 
-					{item.favorite === true ? (
-						<button onClick={() => faveFalse(item)}>
-							<i class="fas fa-heart"></i>
-						</button>
-					) : (
-						<button onClick={() => faveTrue(item)}>
-							<i className="far fa-heart"></i>
-						</button>
-					)}
-					{/* <button>
-						<i className="far fa-edit"> */}
-					<Modal
-						handleAuth={handleAuth}
-						token={token}
-						setToken={setToken}
-						click={click}
-						setClick={setClick}
-						createNew={false}
-						id={item.id}
-					/>
-					{/* </i>
-					</button> */}
+				// <div className="item-card" key={index}>
+				// 	<img
+				// 		style={closetItemsStyle}
+				// 		src={item.url}
+				// 		alt={item.index}
+				// 	/>
+				// 	<p>{item.designer}</p>
+				// 	<p>{item.description}</p>
+				// 	<p>{item.color}</p>
+				// 	<p>{item.item_type}</p>
+				// 	<p>{item.subtype}</p>
+				// 	<p>{item.season}</p>
+				// 	<p>{item.favorite}</p>
 
-					<button onClick={() => handleDelete(item.id)}>
-						<i class="fas fa-trash-alt"></i>
-					</button>
-				</div>
+				// 	{item.favorite === true ? (
+				// 		<button onClick={() => faveFalse(item)}>
+				// 			<i class="fas fa-heart"></i>
+				// 		</button>
+				// 	) : (
+				// 		<button onClick={() => faveTrue(item)}>
+				// 			<i className="far fa-heart"></i>
+				// 		</button>
+				// 	)}
+				// 	{/* <button>
+				// 		<i className="far fa-edit"> */}
+				// 	<Modal
+				// 		handleAuth={handleAuth}
+				// 		token={token}
+				// 		setToken={setToken}
+				// 		click={click}
+				// 		setClick={setClick}
+				// 		createNew={false}
+				// 		id={item.id}
+				// 	/>
+				// 	{/* </i>
+				// 	</button> */}
+
+				// 	<button onClick={() => handleDelete(item.id)}>
+				// 		<i class="fas fa-trash-alt"></i>
+				// 	</button>
+				// </div>
 			);
 		});
 	}
 
 	return (
 		<>
-			<div>
+			<div id="closet">
 				<div>
 					<Modal
 						handleAuth={handleAuth}
