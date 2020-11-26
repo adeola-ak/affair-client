@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import "./NewUser.css";
 
 function NewUser({ handleLogin }) {
 	const [username, setUsername] = useState("");
@@ -25,7 +28,7 @@ function NewUser({ handleLogin }) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		fetch("http://localhost:3000/users", {
+		fetch("https://aa-affair.herokuapp.com/users", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -51,15 +54,12 @@ function NewUser({ handleLogin }) {
 		setGender("");
 		setStyle("");
 	};
-	const formDivStyle = {
-		margin: "auto",
-		padding: "20px",
-		width: "80%",
-	};
 
 	return (
-		<div style={formDivStyle}>
-			<h1>Sign Up</h1>
+		<div className="formDiv">
+			<h3 className="form-title">
+				<i>sign up</i>
+			</h3>
 			<form className="ui form" onSubmit={handleSubmit}>
 				<div className="field">
 					<label>Username</label>
@@ -79,7 +79,6 @@ function NewUser({ handleLogin }) {
 						placeholder="password"
 					/>
 				</div>
-
 				<div className="field">
 					<label>Name</label>
 					<input
@@ -89,7 +88,6 @@ function NewUser({ handleLogin }) {
 						placeholder="name"
 					/>
 				</div>
-
 				<div className="field">
 					<label>Gender</label>
 					<input
@@ -99,7 +97,6 @@ function NewUser({ handleLogin }) {
 						placeholder="gender"
 					/>
 				</div>
-
 				<div className="field">
 					<label>Style</label>
 					<input
@@ -109,10 +106,9 @@ function NewUser({ handleLogin }) {
 						placeholder="style"
 					/>
 				</div>
-
-				<button className="ui button" type="submit">
-					Submit
-				</button>
+				<Link to="/closet">
+					<Button type="submit">Submit</Button>
+				</Link>
 			</form>
 		</div>
 	);

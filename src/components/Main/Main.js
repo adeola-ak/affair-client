@@ -15,7 +15,7 @@ function Main() {
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 		if (token) {
-			fetch("http://localhost:3000/auto_login", {
+			fetch("https://aa-affair.herokuapp.com/auto_login", {
 				headers: {
 					Authorization: `Bearer ${token}`,
 				},
@@ -31,7 +31,7 @@ function Main() {
 
 	const handleAuth = () => {
 		const token = localStorage.getItem("token");
-		fetch("http://localhost:3000/items", {
+		fetch("https://aa-affair.herokuapp.com/items", {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -85,13 +85,14 @@ function Main() {
 				<NewUser />
 			</Route>
 
-			<Route path="/items/:id">
+			<Route path="/closet">
 				<Search
 					closet={closet}
 					setCloset={setCloset}
 					handleInputSubmit={handleInputSubmit}
 					searchInput={searchInput}
 					inputTextHandler={inputTextHandler}
+					user={user}
 				/>
 				<Closet
 					// {...routerprops}

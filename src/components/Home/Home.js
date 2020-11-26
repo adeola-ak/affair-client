@@ -6,12 +6,12 @@ function Home() {
 	return (
 		<div className="Home">
 			<h1 className="app-name">affair</h1>
-			<Link to="/login">
+			{/* <Link to="/login">
 				<button className="welcome-buttons">login</button>
 			</Link>
 			<Link to="/new-user">
 				<button className="welcome-buttons">create an account</button>
-			</Link>
+			</Link> */}
 		</div>
 	);
 }

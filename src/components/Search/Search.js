@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import DarkMode from "../DarkMode/DarkMode";
+import "./Search.css";
 
 const Search = ({
 	closet,
@@ -6,6 +8,7 @@ const Search = ({
 	handleInputSubmit,
 	searchInput,
 	inputTextHandler,
+	user,
 }) => {
 	console.log(closet);
 
@@ -17,22 +20,28 @@ const Search = ({
 	};
 
 	return (
-		<form onSubmit={handleInputSubmit}>
-			<input
-				style={BarStyling}
-				value={searchInput}
-				its
-				placeholder={"search your closet"}
-				onChange={inputTextHandler}
-			/>
+		<>
+			<div className="greeting">
+				<h2>{user.username}'s Closet</h2>
+				<DarkMode />
+			</div>
+			<form onSubmit={handleInputSubmit}>
+				<input
+					style={BarStyling}
+					value={searchInput}
+					its
+					placeholder={"search your closet"}
+					onChange={inputTextHandler}
+				/>
 
-			<input
-				// style={BarStyling}
-				className=""
-				type="submit"
-				value="Search"
-			/>
-		</form>
+				<input
+					// style={BarStyling}
+					className=""
+					type="submit"
+					value="Search"
+				/>
+			</form>
+		</>
 	);
 };
 

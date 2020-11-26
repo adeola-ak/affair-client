@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import "./Login.css";
 
 const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
 	const [username, setUsername] = useState("");
@@ -15,7 +17,7 @@ const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		fetch("http://localhost:3000/login", {
+		fetch("https://aa-affair.herokuapp.com/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -37,16 +39,12 @@ const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
 		setPassword("");
 	};
 
-	const formDivStyle = {
-		margin: "auto",
-		padding: "20px",
-		width: "80%",
-	};
-
 	return (
 		<div>
-			<div style={formDivStyle}>
-				<h1>Log In</h1>
+			<div className="formDiv">
+				<h3 className="form-title">
+					<i>sign in</i>
+				</h3>
 				<form className="ui form" onSubmit={handleSubmit}>
 					<div className="field">
 						<label>Username</label>
@@ -67,10 +65,8 @@ const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
 						/>
 					</div>
 
-					<Link to="/items/:id">
-						<button className="ui button" type="submit">
-							Submit
-						</button>
+					<Link to="/closet">
+						<Button type="submit">Submit</Button>
 					</Link>
 				</form>
 			</div>

@@ -3,7 +3,6 @@ import "./Closet.css";
 import DarkMode from "../DarkMode/DarkMode";
 import axios from "axios";
 import Modal from "../Modal/Modal";
-import Search from "../Search/Search";
 // import ItemForm from "../ItemForm/ItemForm";
 
 const Closet = ({
@@ -29,7 +28,7 @@ const Closet = ({
 
 	const handleUpdate = (id) => {
 		axios({
-			url: `http://localhost:3000/items/${id}`,
+			url: `https://aa-affair.herokuapp.com/items/${id}`,
 			method: "PUT",
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -43,7 +42,7 @@ const Closet = ({
 
 	const handleDelete = (id) => {
 		axios({
-			url: `http://localhost:3000/items/${id}`,
+			url: `https://aa-affair.herokuapp.com/items/${id}`,
 			method: "DELETE",
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -56,7 +55,7 @@ const Closet = ({
 
 	const faveTrue = (item) => {
 		axios({
-			url: `http://localhost:3000/items/${item.id}`,
+			url: `https://aa-affair.herokuapp.com/items/${item.id}`,
 			method: "PUT",
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -70,7 +69,7 @@ const Closet = ({
 
 	const faveFalse = (item) => {
 		axios({
-			url: `http://localhost:3000/items/${item.id}`,
+			url: `https://aa-affair.herokuapp.com/items/${item.id}`,
 			method: "PUT",
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -134,7 +133,6 @@ const Closet = ({
 	return (
 		<>
 			<div>
-				<h2>{user.username}'s Closet</h2>
 				<div>
 					<Modal
 						handleAuth={handleAuth}
@@ -144,10 +142,9 @@ const Closet = ({
 						setClick={setClick}
 						createNew={true}
 					/>
-					<DarkMode />
 				</div>
 
-				<div className="item-container">{fullCloset}</div>
+				<div className="clothes-container">{fullCloset}</div>
 				{/* <ItemForm
 					handleAuth={handleAuth}
 					token={token}

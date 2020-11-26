@@ -1,9 +1,9 @@
-/* .footer {
+.footer {
 	color: brown;
 	text-align: center;
 	height: 50px;
-	margin-top: -50px;
-} */
+	margin-bottom: 0px;
+}
 
 body {
 	display: flex;

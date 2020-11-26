@@ -1,19 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lateef&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Raleway+Dots&display=swap");
 
+body {
+	/* background-color: black; */
+	/* margin: 100px; */
+	background-image: url("https://res.cloudinary.com/dusr8fbuo/image/upload/v1606334244/clem-onojeghuo-HpEDSZukJqk-unsplash_btqbro.jpg");
+}
 .Home {
 	text-align: center;
-	background-image: url("https://res.cloudinary.com/dusr8fbuo/image/upload/v1606334244/clem-onojeghuo-HpEDSZukJqk-unsplash_btqbro.jpg");
-	background-size: contain;
+	/* background-image: url("https://res.cloudinary.com/dusr8fbuo/image/upload/v1606334244/clem-onojeghuo-HpEDSZukJqk-unsplash_btqbro.jpg"); */
+	background-size: cover;
 	opacity: 0.8;
+	margin-top: 100px;
+	border: none;
+	height: 300px;
+	margin: 100px;
 }
 
+.Home h1 {
+	margin: 0px;
+}
 .app-name {
 	font-family: "Orbitron", sans-serif;
 	/* font-family: "Raleway Dots", cursive; */
-	color: ;
+	color: gold;
 	font-size: 300px;
 	/* opacity: 0.5; */
 }
