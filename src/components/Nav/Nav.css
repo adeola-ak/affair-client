@@ -161,6 +161,7 @@
 	/*Mobile View */
 	.header {
 		padding: 0px 10px;
+		position: relative;
 	}
 	.logo {
 		width: 45px;
@@ -211,10 +212,21 @@
 		background: green;
 		border-radius: 3px;
 		color: white;
-		padding: 20px 0px;
 		width: 80%;
-		align-self: center;
+		align-content: center;
+		border: 2px solid gold;
+		border-radius: 12px;
+		padding: 5px;
+	}
+	.sign-in {
+		background: green;
 		border-radius: 3px;
+		color: white;
+		width: 80%;
+		align-content: center;
+		border: 2px solid gold;
+		border-radius: 12px;
+		padding: 5px;
 	}
 
 	.signin-up {

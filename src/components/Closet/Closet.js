@@ -90,7 +90,7 @@ const Closet = ({
 
 	const useStyles = makeStyles({
 		root: {
-			maxWidth: 300,
+			Width: 300,
 		},
 		media: {
 			height: 140,
@@ -103,12 +103,21 @@ const Closet = ({
 	if (closet) {
 		fullCloset = closet.map((item, index) => {
 			return (
-				<Card className={classes.root}>
+				<Card
+					className={classes.root}
+					style={{ width: "200px", marginBottom: "40px" }}
+				>
 					<CardActionArea>
 						<img
+							style={{
+								display: "block",
+								width: "50%",
+								marginLeft: "auto",
+								marginRight: "auto",
+							}}
 							className={classes.media}
 							src={item.url}
-							title="Contemplative Reptile"
+							title={item.index}
 						/>
 						<CardContent>
 							<Typography
@@ -116,25 +125,35 @@ const Closet = ({
 								variant="h5"
 								component="h2"
 							>
-								Lizard
+								{item.designer}
 							</Typography>
 							<Typography
 								variant="body2"
 								color="textSecondary"
 								component="p"
 							>
-								Lizards are a widespread group of squamate
-								reptiles, with over 6,000 species, ranging
-								across all continents except Antarctica
+								{item.description}
 							</Typography>
 						</CardContent>
 					</CardActionArea>
 					<CardActions>
 						<Button size="small" color="primary">
-							Share
+							<Modal
+								handleAuth={handleAuth}
+								token={token}
+								setToken={setToken}
+								click={click}
+								setClick={setClick}
+								createNew={false}
+								id={item.id}
+							/>
 						</Button>
-						<Button size="small" color="primary">
-							Learn More
+						<Button
+							size="small"
+							color="primary"
+							onClick={() => handleDelete(item.id)}
+						>
+							Delete{" "}
 						</Button>
 					</CardActions>
 				</Card>
@@ -147,11 +166,12 @@ const Closet = ({
 				// 	/>
 				// 	<p>{item.designer}</p>
 				// 	<p>{item.description}</p>
-				// 	<p>{item.color}</p>
+				// 	{/* <p>{item.color}</p>
 				// 	<p>{item.item_type}</p>
 				// 	<p>{item.subtype}</p>
 				// 	<p>{item.season}</p>
-				// 	<p>{item.favorite}</p>
+				// 	<p>{item.favorite}</p> */}
+				// 	<p>{item.created_at}</p>
 
 				// 	{item.favorite === true ? (
 				// 		<button onClick={() => faveFalse(item)}>
@@ -186,8 +206,8 @@ const Closet = ({
 
 	return (
 		<>
-			<div id="closet">
-				<div>
+			<div className="closet">
+				<div className="add-an-item">
 					<Modal
 						handleAuth={handleAuth}
 						token={token}

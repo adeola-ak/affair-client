@@ -1,9 +1,21 @@
 .greeting {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	background-color: white;
+	padding-right: 80px;
+}
+
+.greeting h2 {
+	padding-left: 80px;
 }
 
 #form {
 	background-color: white;
+}
+
+.search {
+	display: flex;
+	justify-content: flex-end;
+	background-color: white;
+	padding-right: 80px;
 }

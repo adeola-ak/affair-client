@@ -74,14 +74,16 @@ const Nav = () => {
 					<li className="option" onClick={closeMobileMenu}>
 						<a href="blog">blog</a>
 					</li>
+
 					<li
 						className="option mobile-option"
 						onClick={closeMobileMenu}
 					>
-						<a href="/about">about</a>
-						<a href="/contact">contact</a>
-						<a href="/blog">blog</a>
+						<a href="/login" className="sign-up">
+							SIGN-IN
+						</a>
 					</li>
+
 					<li
 						className="option mobile-option"
 						onClick={closeMobileMenu}

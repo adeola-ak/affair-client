@@ -65,7 +65,7 @@ const Modal = ({
 	const handleUpdate = (event) => {
 		event.preventDefault();
 		console.log("handling update");
-		fetch(`http://localhost:3000/items/${id}`, {
+		fetch(`https://aa-affair.herokuapp.com/items/${id}`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
@@ -90,7 +90,7 @@ const Modal = ({
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		fetch("http://localhost:3000/items", {
+		fetch("https://aa-affair.herokuapp.com/items", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -125,20 +125,12 @@ const Modal = ({
 	return (
 		<div>
 			{createNew ? (
-				<Button
-					variant="outlined"
-					color="primary"
-					onClick={handleClickOpen}
-				>
+				<Button size="small" color="primary" onClick={handleClickOpen}>
 					Add an Item
 				</Button>
 			) : (
-				<Button
-					variant="outlined"
-					color="primary"
-					onClick={handleClickOpen}
-				>
-					Update Item
+				<Button size="small" color="primary" onClick={handleClickOpen}>
+					Edit
 				</Button>
 			)}
 

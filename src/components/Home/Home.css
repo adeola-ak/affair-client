@@ -16,17 +16,16 @@ div#root {
 	border: none;
 	height: 300px;
 	margin: 100px;
-}
-
-.Home h1 {
-	margin: 0px;
+	display: flex;
+	justify-content: center;
 }
 
 .app-name {
 	font-family: "Orbitron", sans-serif;
-	/* font-family: "Raleway Dots", cursive; */
 	color: gold;
 	font-size: 300px;
+	position: fixed;
+
 	/* opacity: 0.5; */
 }
 

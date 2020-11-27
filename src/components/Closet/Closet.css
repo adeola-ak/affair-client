@@ -4,15 +4,33 @@
 	flex-wrap: wrap;
 }
 
-/* .item-card {
+.item-card {
 	flex: 1 0 200px;
 	max-width: 185px;
 	padding: 40px;
 	text-align: center;
-} */
+}
 
-/* #closet {
+.closet {
 	background-color: white;
 	background-image: none;
 	height: 1500px;
+	position: fixed;
+}
+
+.add-an-item {
+	display: flex;
+	justify-content: flex-end;
+}
+
+@media (max-width: 648px) {
+	.add-an-item {
+		padding-right: 20px;
+	}
+
+	/* .closet {
+	margin-left: 20px;
+		margin-right: 20px;
+
 } */
+}
