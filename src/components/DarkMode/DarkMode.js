@@ -1,6 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import Helmet from "react-helmet";
 import "../DarkMode/DarkMode.css";
+import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
+import { yellow } from "@material-ui/core/colors";
 
 const themeType = {
 	dark: "dark",
@@ -39,9 +41,14 @@ const DarkMode = () => {
 				onKeyDown={toggleMode}
 			>
 				{mode === themeType.light ? (
-					<i class="far fa-lightbulb fa-2x"></i>
+					<PowerSettingsNewIcon
+						fontSize="large"
+						style={{ color: yellow[500] }}
+					/>
 				) : (
-					<i class="fas fa-lightbulb fa-2x"></i>
+					<>
+						<PowerSettingsNewIcon fontSize="large" color="action" />
+					</>
 				)}
 			</div>
 		</Fragment>

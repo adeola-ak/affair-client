@@ -1,21 +1,40 @@
 .greeting {
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: center; */
 	background-color: white;
-	padding-right: 80px;
+	/* padding-right: 80px; */
+	/* background-color: cornflowerblue; */
+}
+
+.greeting-dark {
+	display: flex;
+	/* justify-content: center; */
+	background-color: black;
 }
 
 .greeting h2 {
-	padding-left: 80px;
+	margin: auto;
+	margin-top: 70px;
+}
+
+.icon {
+	margin-top: 70px;
 }
 
 #form {
-	background-color: white;
+	/* background-color: white; */
+	margin-top: 70px;
+	margin: 70px 70px;
 }
 
 .search {
 	display: flex;
 	justify-content: flex-end;
-	background-color: white;
 	padding-right: 80px;
+	background-color: white;
+}
+
+.loading {
+	margin: auto;
+	font-size: 80px;
 }

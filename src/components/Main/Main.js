@@ -48,12 +48,6 @@ function Main() {
 		setSearchInput(event.target.value);
 	};
 
-	// const closetSearch = async (searchInput) => {
-	// 	const filtered = closet.filter((item) => {
-	// 		return item.description.toLowerCase().includes(searchInput.toLowerCase())
-	// 	});
-	// 	setCloset(closet)
-
 	const handleInputSubmit = (event) => {
 		console.log("hello");
 		event.preventDefault();

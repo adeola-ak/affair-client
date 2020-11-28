@@ -205,14 +205,14 @@ const Modal = ({
 							type="text"
 							placeholder="favorite"
 						/>
-						<button
+						<Button
 							type="submit"
-							// onSubmit={handleSubmit}
+							variant="outlined"
 							onClick={handleClose}
 							color="primary"
 						>
 							Submit
-						</button>
+						</Button>
 					</form>
 				</DialogContent>
 			</Dialog>

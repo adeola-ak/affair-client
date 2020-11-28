@@ -3,6 +3,10 @@ body.light {
 	background-color: white;
 }
 body.dark {
-	color: white;
-	background-color: black;
+	color: red;
+	background-color: pink;
+}
+
+.theme-mode {
+	height: 30px;
 }

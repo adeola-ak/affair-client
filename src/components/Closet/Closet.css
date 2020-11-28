@@ -2,6 +2,7 @@
 	display: flex;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
+	background-color: white;
 }
 
 .item-card {
@@ -9,18 +10,23 @@
 	max-width: 185px;
 	padding: 40px;
 	text-align: center;
+	background-color: white;
 }
 
 .closet {
 	background-color: white;
 	background-image: none;
-	height: 1500px;
-	position: fixed;
+	height: 1300px;
+	position: absolute;
 }
 
 .add-an-item {
 	display: flex;
-	justify-content: flex-end;
+	/* justify-content: flex-end; */
+	margin-top: 0px;
+	margin-left: 50px;
+	margin-bottom: 50px;
+	background-color: white;
 }
 
 @media (max-width: 648px) {

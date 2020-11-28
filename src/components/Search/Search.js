@@ -14,11 +14,18 @@ const Search = ({
 }) => {
 	console.log(closet);
 
-	return (
+	return closet.length > 0 ? (
 		<>
-			<div className="greeting">
+			<div
+				className="greeting"
+				// {
+				// 	mode === themeType.light ? "greeting" : "greeting-dark"
+				// }
+			>
 				<h2>{user.username}'s Closet</h2>
-				<DarkMode />
+				<div className="icon">
+					<DarkMode />
+				</div>
 			</div>
 			<div className="search">
 				<form id="form" onSubmit={handleInputSubmit}>
@@ -49,6 +56,8 @@ const Search = ({
 				</form>
 			</div>
 		</>
+	) : (
+		<p className="loading">loading . . .</p>
 	);
 };
 

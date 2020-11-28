@@ -11,7 +11,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
+import StarsIcon from "@material-ui/icons/Stars";
 const Closet = ({
 	closet,
 	token,
@@ -133,6 +133,13 @@ const Closet = ({
 								component="p"
 							>
 								{item.description}
+								<Typography
+									variant="body2"
+									color="textSecondary"
+									component="p"
+								>
+									Date Added: <b>{item.created_at}</b>
+								</Typography>
 							</Typography>
 						</CardContent>
 					</CardActionArea>
@@ -153,8 +160,32 @@ const Closet = ({
 							color="primary"
 							onClick={() => handleDelete(item.id)}
 						>
-							Delete{" "}
+							Delete
 						</Button>
+
+						{item.favorite === true ? (
+							<button
+								onClick={() => faveFalse(item)}
+								style={{
+									border: "none",
+									backgroundColor: "none",
+									background: "transparent",
+								}}
+							>
+								<i class="fas fa-heart"></i>
+							</button>
+						) : (
+							<button
+								onClick={() => faveTrue(item)}
+								style={{
+									border: "none",
+									backgroundColor: "none",
+									background: "transparent",
+								}}
+							>
+								<i className="far fa-heart"></i>
+							</button>
+						)}
 					</CardActions>
 				</Card>
 
@@ -204,18 +235,48 @@ const Closet = ({
 		});
 	}
 
+	//  <Button
+	// 		variant="contained"
+	// 		color="default"
+	// 		className={classes.button}
+	// 		startIcon={<CloudUploadIcon />}
+	//  >
+	// 		<Modal
+	// 			handleAuth={handleAuth}
+	// 			token={token}
+	// 			setToken={setToken}
+	// 			click={click}
+	// 			setClick={setClick}
+	// 			createNew={true}
+	// 		/>
+	//  </Button>;
+
 	return (
 		<>
 			<div className="closet">
 				<div className="add-an-item">
-					<Modal
+					{/* <Modal
 						handleAuth={handleAuth}
 						token={token}
 						setToken={setToken}
 						click={click}
 						setClick={setClick}
 						createNew={true}
-					/>
+					/> */}
+					<Button
+						variant="contained"
+						className={classes.button}
+						startIcon={<StarsIcon />}
+					>
+						<Modal
+							handleAuth={handleAuth}
+							token={token}
+							setToken={setToken}
+							click={click}
+							setClick={setClick}
+							createNew={true}
+						/>
+					</Button>
 				</div>
 
 				<div className="clothes-container">{fullCloset}</div>
