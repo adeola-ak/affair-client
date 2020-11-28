@@ -104,14 +104,6 @@ function Main() {
 					inputTextHandler={inputTextHandler}
 				/>
 			</Route>
-
-			{/* <Route path="/newitem">
-				<ItemForm
-					handleAuth={handleAuth}
-					token={token}
-					setToken={setToken}
-				/>
-			</Route> */}
 		</Switch>
 	);
 }

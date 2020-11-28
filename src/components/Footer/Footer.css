@@ -1,16 +1,20 @@
 .footer {
-	color: brown;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	color: ivory;
+	background-color: black;
+	height: 80px;
 	text-align: center;
-	height: 50px;
-	margin-bottom: 0px;
 }
 
-body {
+/* body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
 }
 
-main {
+.main {
 	flex: 1 0 auto;
-}
+} */
