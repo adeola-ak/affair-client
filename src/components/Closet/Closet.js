@@ -12,17 +12,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import StarsIcon from "@material-ui/icons/Stars";
-const Closet = ({
-	closet,
-	token,
-	setToken,
-	handleAuth,
-	user,
-	handleInputSubmit,
-	searchInput,
-	inputTextHandler,
-	setCloset,
-}) => {
+const Closet = ({ closet, token, setToken, handleAuth }) => {
 	const [click, setClick] = useState(false);
 	const [favorite, setFavorite] = useState(false);
 

@@ -23,6 +23,7 @@ const Search = ({
 				// }
 			>
 				<h2>{user.username}'s Closet</h2>
+
 				<div className="icon">
 					<DarkMode />
 				</div>
@@ -57,7 +58,7 @@ const Search = ({
 			</div>
 		</>
 	) : (
-		<p className="loading">loading . . .</p>
+		<p className="loading">loading closet...</p>
 	);
 };
 

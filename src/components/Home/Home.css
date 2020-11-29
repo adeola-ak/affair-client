@@ -2,20 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lateef&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
 
-div#root {
-	/* background-color: black; */
-	/* margin: 100px; */
-	background-image: url("https://res.cloudinary.com/dusr8fbuo/image/upload/v1606334244/clem-onojeghuo-HpEDSZukJqk-unsplash_btqbro.jpg");
-	height: 1300px;
-}
 .Home {
+	background-image: url("https://res.cloudinary.com/dusr8fbuo/image/upload/v1606334244/clem-onojeghuo-HpEDSZukJqk-unsplash_btqbro.jpg");
 	text-align: center;
 	background-size: cover;
-	opacity: 0.8;
-	margin-top: 100px;
+	opacity: 0.9;
 	border: none;
-	height: 300px;
-	margin: 100px;
+	height: 1300px;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 }

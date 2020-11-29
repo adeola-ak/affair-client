@@ -47,7 +47,10 @@ const DarkMode = () => {
 					/>
 				) : (
 					<>
-						<PowerSettingsNewIcon fontSize="large" color="action" />
+						<PowerSettingsNewIcon
+							fontSize="large"
+							color="primary"
+						/>
 					</>
 				)}
 			</div>

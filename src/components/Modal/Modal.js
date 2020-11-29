@@ -7,6 +7,14 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import axios from "axios";
+import MenuItem from "@material-ui/core/MenuItem";
+
+import { makeStyles } from "@material-ui/core/styles";
+
+import InputLabel from "@material-ui/core/InputLabel";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 const Modal = ({
 	token,
@@ -26,6 +34,7 @@ const Modal = ({
 	const [description, setDescription] = useState("");
 	const [color, setColor] = useState("");
 	const [season, setSeason] = useState("");
+	const [year, setYear] = useState();
 	const [url, setUrl] = useState("");
 	const [favorite, setFavorite] = useState("");
 
@@ -46,6 +55,9 @@ const Modal = ({
 	};
 	const handleSeasonChange = (event) => {
 		setSeason(event.target.value);
+	};
+	const handleYearChange = (event) => {
+		setYear(event.target.value);
 	};
 	const handleUrlChange = (event) => {
 		setUrl(event.target.value);
@@ -81,6 +93,7 @@ const Modal = ({
 				season,
 				url,
 				favorite,
+				year,
 			}),
 		});
 		handleAuth();
@@ -106,6 +119,7 @@ const Modal = ({
 				season,
 				url,
 				favorite,
+				year,
 			}),
 		})
 			.then(() => {
@@ -118,9 +132,19 @@ const Modal = ({
 		setDescription("");
 		setColor("");
 		setSeason("");
+		setYear("");
 		setUrl("");
 		setFavorite("");
 	};
+
+	const useStyles = makeStyles((theme) => ({
+		formControl: {
+			margin: theme.spacing(1),
+			minWidth: 120,
+		},
+	}));
+
+	const classes = useStyles();
 
 	return (
 		<div>
@@ -144,9 +168,7 @@ const Modal = ({
 						Add an Item
 					</DialogTitle>
 				) : (
-					<DialogTitle id="form-dialog-title">
-						Update Item
-					</DialogTitle>
+					<DialogTitle id="form-dialog-title">Edit Item</DialogTitle>
 				)}
 
 				<DialogContent>
@@ -156,55 +178,91 @@ const Modal = ({
 					</DialogContentText> */}
 
 					<form onSubmit={createNew ? handleSubmit : handleUpdate}>
+						<label>designer</label>
 						<input
 							value={designer}
 							onChange={handleDesignerChange}
 							type="text"
-							placeholder="designer"
+							placeholder="required"
 						/>
+						<label>item type</label>
 						<input
 							value={item_type}
 							onChange={handleItem_typeChange}
 							type="text"
-							placeholder="item type"
+							placeholder="ex: Handbag"
 						/>
+						<label>subtype</label>
 						<input
 							value={subtype}
 							onChange={handleSubtypeChange}
 							type="text"
-							placeholder="subtype"
+							placeholder="ex: Crossbody"
 						/>
+						<label>description</label>
 						<input
 							value={description}
 							onChange={handleDescriptionChange}
 							type="text"
-							placeholder="description"
-						/>
+							placeholder="required"
+						/>{" "}
+						<label>color</label>
 						<input
 							value={color}
 							onChange={handleColorChange}
 							type="text"
-							placeholder="color"
+							placeholder="required"
 						/>
-						<input
-							value={season}
-							onChange={handleSeasonChange}
-							type="text"
-							placeholder="season"
-						/>
+						<div>
+							<FormControl className={classes.formControl}>
+								<InputLabel id="demo-simple-select-label">
+									season
+								</InputLabel>
+								<Select
+									labelId="demo-simple-select-label"
+									id="demo-simple-select"
+									value={season}
+									onChange={handleSeasonChange}
+								>
+									<MenuItem value="summer">summer</MenuItem>
+									<MenuItem value="fall">fall</MenuItem>
+									<MenuItem value="winter">winter</MenuItem>
+									<MenuItem value="spring">spring</MenuItem>
+								</Select>
+							</FormControl>
+							<FormControl className={classes.formControl}>
+								<InputLabel id="demo-simple-select-label">
+									year
+								</InputLabel>
+								<Select
+									labelId="demo-simple-select-label"
+									id="demo-simple-select"
+									value={year}
+									onChange={handleYearChange}
+								>
+									<MenuItem value="2020">2020</MenuItem>
+									<MenuItem value="2019">2019</MenuItem>
+									<MenuItem value="2018">2018</MenuItem>
+									<MenuItem value="2017">2017</MenuItem>
+									<MenuItem value="2016">2016</MenuItem>
+									<MenuItem value="2015">2015</MenuItem>
+								</Select>
+							</FormControl>{" "}
+						</div>{" "}
+						<label>image url</label>
 						<input
 							value={url}
 							onChange={handleUrlChange}
 							type="text"
 							placeholder="url"
 						/>
-						<input
+						{/* <input
 							value={favorite}
 							onChange={handleFavoriteChange}
 							// type="checkbox"
 							type="text"
 							placeholder="favorite"
-						/>
+						/> */}
 						<Button
 							type="submit"
 							variant="outlined"

@@ -40,7 +40,7 @@ const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
 	};
 
 	return (
-		<div>
+		<div className="login-div">
 			<div className="formDiv">
 				<h3 className="form-title">
 					<i>sign in</i>

@@ -76,7 +76,7 @@ function Main() {
 			</Route>
 
 			<Route path="/new-user">
-				<NewUser />
+				<NewUser token={token} setToken={setToken} />
 			</Route>
 
 			<Route path="/closet">

@@ -3,10 +3,23 @@ body.light {
 	background-color: white;
 }
 body.dark {
-	color: red;
-	background-color: pink;
+	color: white;
+	background-color: black;
 }
 
+body.light .greeting h2 {
+	text-shadow: 3px 3px 10px gray;
+}
+body.dark .greeting h2 {
+	text-shadow: 3px 3px 10px gold;
+	text-shadow: 1px 1px 2px black, 0 0 10px gold;
+}
+
+/* text-shadow: 1px 1px 2px black, 0 0 40px gold 0 0 35px var(--purple); */
+body.dark .header {
+	background-color: black;
+	border-bottom: 3px solid gold;
+}
 .theme-mode {
 	height: 30px;
 }
