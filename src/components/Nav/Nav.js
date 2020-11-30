@@ -24,7 +24,7 @@ const Nav = () => {
 						<Link to="/contact">contact</Link>
 					</li>
 					<li className="option" onClick={closeMobileMenu}>
-						<Link to="blog">blog</Link>
+						<Link to="/blog">blog</Link>
 					</li>
 
 					<li
@@ -34,7 +34,7 @@ const Nav = () => {
 						{/* <a href="/login" className="sign-up">
 							SIGN-IN
 						</a> */}
-						<Link to="login" className="sign-up">
+						<Link to="login" className="signup-btn">
 							SIGN-IN
 						</Link>
 					</li>
@@ -46,15 +46,17 @@ const Nav = () => {
 						{/* <a href="/new-user" className="sign-up">
 							SIGN-UP
 						</a> */}
-						<a href="/new-user" className="signup-btn">
+						<Link to="new-user" className="signup-btn">
 							SIGN-UP
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>
 			<ul className="signin-up">
 				<li className="sign-in" onClick={closeMobileMenu}>
-					<Link to="login">SIGN-IN</Link>
+					<Link to="login" className="signup-btn">
+						SIGN-IN
+					</Link>
 					{/* <a href="/login">SIGN-IN</a> */}
 				</li>
 				<li onClick={closeMobileMenu}>
