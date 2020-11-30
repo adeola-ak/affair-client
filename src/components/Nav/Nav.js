@@ -34,8 +34,8 @@ const Nav = () => {
 						{/* <a href="/login" className="sign-up">
 							SIGN-IN
 						</a> */}
-						<Link to="login" className="signup-btn">
-							SIGN-IN
+						<Link to="login">
+							<b>SIGN-IN</b>
 						</Link>
 					</li>
 
@@ -54,9 +54,7 @@ const Nav = () => {
 			</div>
 			<ul className="signin-up">
 				<li className="sign-in" onClick={closeMobileMenu}>
-					<Link to="login" className="signup-btn">
-						SIGN-IN
-					</Link>
+					<Link to="login">SIGN-IN</Link>
 					{/* <a href="/login">SIGN-IN</a> */}
 				</li>
 				<li onClick={closeMobileMenu}>
