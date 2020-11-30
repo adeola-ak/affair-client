@@ -16,13 +16,10 @@ const Search = ({
 
 	return closet.length > 0 ? (
 		<>
-			<div
-				className="greeting"
-				// {
-				// 	mode === themeType.light ? "greeting" : "greeting-dark"
-				// }
-			>
-				<h2>{user.username}'s Closet</h2>
+			<div className="greeting">
+				<h2>
+					{user.username}'s {user.style} Closet
+				</h2>
 
 				<div className="icon">
 					<DarkMode />

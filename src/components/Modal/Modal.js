@@ -16,15 +16,7 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-const Modal = ({
-	token,
-	setToken,
-	handleAuth,
-	click,
-	setClick,
-	createNew,
-	id,
-}) => {
+const Modal = ({ token, user, click, setClick, createNew, id }) => {
 	console.log(token);
 	const [open, setOpen] = React.useState(false);
 
@@ -95,9 +87,7 @@ const Modal = ({
 				favorite,
 				year,
 			}),
-		});
-		handleAuth();
-		setClick();
+		}).then(() => setClick(!click));
 		console.log("item updated");
 	};
 

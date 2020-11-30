@@ -41,3 +41,9 @@
 	margin: auto;
 	font-size: 80px;
 }
+
+@media (max-width: 648px) {
+	.greeting h2 {
+		font-size: 32px;
+	}
+}

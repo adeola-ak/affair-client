@@ -12,29 +12,17 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import StarsIcon from "@material-ui/icons/Stars";
-const Closet = ({ closet, token, setToken, handleAuth }) => {
+
+const Closet = ({ closet, authData, user }) => {
 	const [click, setClick] = useState(false);
 	const [favorite, setFavorite] = useState(false);
+	const [token, setToken] = useState(localStorage.getItem("token"));
 
-	useEffect(() => handleAuth(), [click]);
+	useEffect(() => authData(), [click]);
 	console.log(closet);
 
 	const closetItemsStyle = {
 		height: "8em",
-	};
-
-	const handleUpdate = (id) => {
-		axios({
-			url: `https://aa-affair.herokuapp.com/items/${id}`,
-			method: "PUT",
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-			body: JSON.stringify(id),
-		});
-		// handleAuth();
-		setClick();
-		console.log("item updated");
 	};
 
 	const handleDelete = (id) => {
@@ -44,9 +32,9 @@ const Closet = ({ closet, token, setToken, handleAuth }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		});
-		// handleAuth();
-		setClick();
+		})
+			// handleAuth();
+			.then(() => setClick(!click));
 		console.log("item deleted");
 	};
 
@@ -58,8 +46,7 @@ const Closet = ({ closet, token, setToken, handleAuth }) => {
 				Authorization: `Bearer ${token}`,
 			},
 			data: { favorite: true },
-		});
-		// handleAuth();
+		}).then(() => setClick(!click));
 		setFavorite(true);
 		console.log("item favorited");
 	};
@@ -72,8 +59,7 @@ const Closet = ({ closet, token, setToken, handleAuth }) => {
 				Authorization: `Bearer ${token}`,
 			},
 			data: { favorite: false },
-		});
-		// handleAuth();
+		}).then(() => setClick(!click));
 		setFavorite(false);
 		console.log("item un-favorited");
 	};
@@ -136,13 +122,14 @@ const Closet = ({ closet, token, setToken, handleAuth }) => {
 					<CardActions>
 						<Button size="small" color="primary">
 							<Modal
-								handleAuth={handleAuth}
+								authData={authData}
 								token={token}
 								setToken={setToken}
 								click={click}
 								setClick={setClick}
 								createNew={false}
 								id={item.id}
+								user={user}
 							/>
 						</Button>
 						<Button
@@ -178,88 +165,21 @@ const Closet = ({ closet, token, setToken, handleAuth }) => {
 						)}
 					</CardActions>
 				</Card>
-
-				// <div className="item-card" key={index}>
-				// 	<img
-				// 		style={closetItemsStyle}
-				// 		src={item.url}
-				// 		alt={item.index}
-				// 	/>
-				// 	<p>{item.designer}</p>
-				// 	<p>{item.description}</p>
-				// 	{/* <p>{item.color}</p>
-				// 	<p>{item.item_type}</p>
-				// 	<p>{item.subtype}</p>
-				// 	<p>{item.season}</p>
-				// 	<p>{item.favorite}</p> */}
-				// 	<p>{item.created_at}</p>
-
-				// 	{item.favorite === true ? (
-				// 		<button onClick={() => faveFalse(item)}>
-				// 			<i class="fas fa-heart"></i>
-				// 		</button>
-				// 	) : (
-				// 		<button onClick={() => faveTrue(item)}>
-				// 			<i className="far fa-heart"></i>
-				// 		</button>
-				// 	)}
-				// 	{/* <button>
-				// 		<i className="far fa-edit"> */}
-				// 	<Modal
-				// 		handleAuth={handleAuth}
-				// 		token={token}
-				// 		setToken={setToken}
-				// 		click={click}
-				// 		setClick={setClick}
-				// 		createNew={false}
-				// 		id={item.id}
-				// 	/>
-				// 	{/* </i>
-				// 	</button> */}
-
-				// 	<button onClick={() => handleDelete(item.id)}>
-				// 		<i class="fas fa-trash-alt"></i>
-				// 	</button>
-				// </div>
 			);
 		});
 	}
-
-	//  <Button
-	// 		variant="contained"
-	// 		color="default"
-	// 		className={classes.button}
-	// 		startIcon={<CloudUploadIcon />}
-	//  >
-	// 		<Modal
-	// 			handleAuth={handleAuth}
-	// 			token={token}
-	// 			setToken={setToken}
-	// 			click={click}
-	// 			setClick={setClick}
-	// 			createNew={true}
-	// 		/>
-	//  </Button>;
 
 	return (
 		<>
 			<div className="closet">
 				<div className="add-an-item">
-					{/* <Modal
-						handleAuth={handleAuth}
-						token={token}
-						setToken={setToken}
-						click={click}
-						setClick={setClick}
-						createNew={true}
-					/> */}
 					<Button
 						variant="contained"
 						className={classes.button}
 						startIcon={<StarsIcon />}
 					>
 						<Modal
-							handleAuth={handleAuth}
+							authData={authData}
 							token={token}
 							setToken={setToken}
 							click={click}
@@ -270,13 +190,6 @@ const Closet = ({ closet, token, setToken, handleAuth }) => {
 				</div>
 
 				<div className="clothes-container">{fullCloset}</div>
-				{/* <ItemForm
-					handleAuth={handleAuth}
-					token={token}
-					setToken={setToken}
-					click={click}
-					setClick={setClick}
-				/> */}
 			</div>
 		</>
 	);
