@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import "./NewUser.css";
 import axios from "axios";
 
-const NewUser = ({ handleLogin, token, setToken }) => {
+const NewUser = ({ authData, makeUserProfile, closet }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [name, setName] = useState("");
@@ -27,13 +27,31 @@ const NewUser = ({ handleLogin, token, setToken }) => {
 		setStyle(event.target.value);
 	};
 
-	console.log("test");
-	console.log(token);
-	setToken("");
-	console.log(token);
+	const addAffairTee = () => {
+		axios({
+			url: "https://aa-affair.herokuapp.com/items",
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			},
+			data: {
+				designer: "Affair",
+				item_type: "Top",
+				subtype: "T-Shirt",
+				description: "High Quality Logo Tee",
+				color: "Black",
+				season: " Fall",
+				year: 2020,
+				url:
+					"https://res.cloudinary.com/dusr8fbuo/image/upload/v1606706232/4ebe50e2495b17a79c31e48a0e54883f_copy_xnxvxn.png",
+				favorite: true,
+			},
+		});
+	};
+
 	const handleNewUserSubmit = (event) => {
 		event.preventDefault();
-		console.log("test");
 		fetch("https://aa-affair.herokuapp.com/users", {
 			method: "POST",
 			headers: {
@@ -47,64 +65,15 @@ const NewUser = ({ handleLogin, token, setToken }) => {
 				gender,
 				style,
 			}),
-		});
-
-		fetch("https://aa-affair.herokuapp.com/login", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
-			},
-			body: JSON.stringify({
-				username,
-				password,
-			}),
 		})
 			.then((resp) => resp.json())
 			.then((data) => {
-				console.log(data);
 				localStorage.setItem("token", data.token);
-				// handleLogin(data.user);
-				console.log("logged in");
-				console.log("new token", token);
-			});
-		// setUsername("");
-		// setPassword("");
-		// setName("");
-		// setGender("");
-		// setStyle("");
-
-		// eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ
-		// 	.oT7kSePnYs7eVIsRIzIi0UEC7XBclsrO3qrnXwic8Zg;
-
-		fetch("https://aa-affair.herokuapp.com/auto_login", {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		}).then(() => addSample());
-	};
-
-	const addSample = () => {
-		axios({
-			url: "https://aa-affair.herokuapp.com/items",
-			method: "POST",
-			header: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${token}`,
-			},
-			data: {
-				desginer: "affair",
-				item_type: "Top",
-				subtype: "Tee Shirt",
-				description: "High Quality Cotton Affair T Shirt",
-				color: "Black",
-				season: "Fall",
-				year: 2020,
-				url:
-					"https://apis.mail.yahoo.com/ws/v3/mailboxes/@.id==VjN-qtXns8c0TtWEQ-Hi-uHgpGZkQHQlXTgvkfVqYPhxuUdAWmeJhSI83VVF10WXcN3MBmBxuc2UTjmHlmQVvjcwMQ/messages/@.id==AGVTp1tGP-bFX8LG9QYqIBYWPwY/content/parts/@.id==2/thumbnail?appId=YMailNorrinLaunch",
-				favorite: true,
-			},
-		});
+				makeUserProfile(data.user);
+				console.log(data);
+			})
+			.then(() => addAffairTee())
+			.then(() => authData());
 	};
 
 	return (
@@ -159,9 +128,12 @@ const NewUser = ({ handleLogin, token, setToken }) => {
 							placeholder="style"
 						/>
 					</div>
-					<Link to="/closet">
-						<Button type="submit">Submit</Button>
-					</Link>
+					<Button type="submit">Submit</Button>
+					{closet ? (
+						<Redirect to="/closet" />
+					) : (
+						console.log("not redirecting")
+					)}
 				</form>
 			</div>
 		</div>

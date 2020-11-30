@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import "./Login.css";
 
-const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
+const Login = ({
+	authData,
+	handleLogin,
+	userData,
+	setUserData,
+	closet,
+	makeUserProfile,
+}) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -31,12 +38,10 @@ const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
 			.then((resp) => resp.json())
 			.then((data) => {
 				localStorage.setItem("token", data.token);
-				console.log(userData);
+				makeUserProfile(data.user);
+				console.log(data);
 			})
-			.then(() => handleAuth())
-			.then(() => console.log(userData));
-		setUsername("");
-		setPassword("");
+			.then(() => authData());
 	};
 
 	return (
@@ -65,9 +70,12 @@ const Login = ({ handleAuth, handleLogin, userData, setUserData }) => {
 						/>
 					</div>
 
-					<Link to="/closet">
-						<Button type="submit">Submit</Button>
-					</Link>
+					<Button type="submit">Submit</Button>
+					{closet[0] ? (
+						<Redirect to="/closet" />
+					) : (
+						console.log("not redirecting")
+					)}
 				</form>
 			</div>
 		</div>

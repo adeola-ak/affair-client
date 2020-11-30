@@ -8,43 +8,27 @@ import Search from "../Search/Search";
 
 function Main() {
 	const [closet, setCloset] = useState("");
-	const [token, setToken] = useState(localStorage.getItem("token"));
 	const [user, setUser] = useState("");
 	const [searchInput, setSearchInput] = useState("");
 
-	useEffect(() => {
-		const token = localStorage.getItem("token");
-		if (token) {
-			fetch("https://aa-affair.herokuapp.com/auto_login", {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-				.then((resp) => resp.json())
-				.then((data) => {
-					setUser(data);
-					console.log(data, "user info auto login");
-					console.log(token, "user token after login in");
-				});
-		}
-	}, []);
-
-	const handleAuth = () => {
-		const token = localStorage.getItem("token");
+	const authData = () => {
 		fetch("https://aa-affair.herokuapp.com/items", {
 			headers: {
-				Authorization: `Bearer ${token}`,
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
 			},
 		})
 			.then((resp) => resp.json())
 			.then((data) => {
-				console.log(data, "user data after successful log in");
 				setCloset(data);
+				console.log(closet);
 			});
 	};
 
+	const makeUserProfile = (user) => {
+		setUser(user);
+	};
+
 	const inputTextHandler = (event) => {
-		// console.log(event.target.value);
 		setSearchInput(event.target.value);
 	};
 
@@ -72,11 +56,21 @@ function Main() {
 			</Route>
 
 			<Route path="/login">
-				<Login handleAuth={handleAuth} />
+				<Login
+					authData={authData}
+					closet={closet}
+					makeUserProfile={makeUserProfile}
+				/>
 			</Route>
 
 			<Route path="/new-user">
-				<NewUser token={token} setToken={setToken} />
+				<NewUser
+					authData={authData}
+					closet={closet}
+					// token={token}
+					// setToken={setToken}
+					makeUserProfile={makeUserProfile}
+				/>
 			</Route>
 
 			<Route path="/closet">
@@ -89,16 +83,10 @@ function Main() {
 					user={user}
 				/>
 				<Closet
-					// {...routerprops}
-					handleAuth={handleAuth}
+					authData={authData}
 					closet={closet}
 					setCloset={setCloset}
-					token={token}
-					setToken={setToken}
 					user={user}
-					// id={props.match.params.id}
-					closet={closet}
-					setCloset={setCloset}
 					handleInputSubmit={handleInputSubmit}
 					searchInput={searchInput}
 					inputTextHandler={inputTextHandler}
