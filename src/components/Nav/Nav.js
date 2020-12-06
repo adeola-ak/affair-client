@@ -54,7 +54,7 @@ const Nav = () => {
 			</div>
 			<ul className="signin-up">
 				<li className="sign-in" onClick={closeMobileMenu}>
-					<Link to="login">SIGN-IN</Link>
+					<Link to="login">SIGN IN</Link>
 					{/* <a href="/login">SIGN-IN</a> */}
 				</li>
 				<li onClick={closeMobileMenu}>
