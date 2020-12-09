@@ -18,6 +18,7 @@ const Closet = ({ closet, authData, user }) => {
 	const [token, setToken] = useState(localStorage.getItem("token"));
 
 	useEffect(() => authData(), [click]);
+	// useEffect(() => alert("welcome back `${user.name}`"));
 	console.log(closet);
 
 	const closetItemsStyle = {
