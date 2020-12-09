@@ -51,8 +51,14 @@
 }
 
 .option :hover {
-	color: white;
+	color: gold;
+	text-decoration: underline;
 }
+
+.option-signin-mobile :hover {
+	text-decoration: underline;
+}
+
 .signin-up {
 	display: flex;
 	padding: 0px 5px;
@@ -67,7 +73,7 @@
 	color: white;
 }
 .sign-in :hover {
-	color: white;
+	text-decoration: underline;
 }
 .signup-btn {
 	padding: 10px 10px;
@@ -79,6 +85,7 @@
 	align-items: center;
 	margin-right: 30px;
 }
+
 .mobile-menu {
 	display: none;
 }

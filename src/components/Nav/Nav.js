@@ -23,9 +23,9 @@ const Nav = () => {
 					<li className="option" onClick={closeMobileMenu}>
 						<Link to="/contact">contact</Link>
 					</li>
-					<li className="option" onClick={closeMobileMenu}>
+					{/* <li className="option" onClick={closeMobileMenu}>
 						<Link to="/blog">blog</Link>
-					</li>
+					</li> */}
 
 					<li
 						className="option mobile-option"
@@ -34,7 +34,7 @@ const Nav = () => {
 						{/* <a href="/login" className="sign-up">
 							SIGN-IN
 						</a> */}
-						<Link to="login">
+						<Link to="login" className="option-signin-mobile">
 							<b>SIGN-IN</b>
 						</Link>
 					</li>

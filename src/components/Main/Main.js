@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
+import Nav from "../Nav/Nav";
+import AuthedNav from "../AuthedNav/AuthedNav";
 import Login from "../Login/Login";
 import Home from "../Home/Home";
 import NewUser from "../NewUser/NewUser";
@@ -52,10 +54,12 @@ function Main() {
 	return (
 		<Switch>
 			<Route exact path="/">
+				<Nav />
 				<Home />
 			</Route>
 
 			<Route path="/login">
+				<Nav />
 				<Login
 					authData={authData}
 					closet={closet}
@@ -64,16 +68,16 @@ function Main() {
 			</Route>
 
 			<Route path="/new-user">
+				<Nav />
 				<NewUser
 					authData={authData}
 					closet={closet}
-					// token={token}
-					// setToken={setToken}
 					makeUserProfile={makeUserProfile}
 				/>
 			</Route>
 
 			<Route path="/closet">
+				<AuthedNav user={user} />
 				<Search
 					closet={closet}
 					setCloset={setCloset}

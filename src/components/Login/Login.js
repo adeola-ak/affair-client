@@ -74,7 +74,7 @@ const Login = ({
 					{closet[0] ? (
 						<Redirect to="/closet" />
 					) : (
-						console.log("not redirecting")
+						console.log("not able to redirect")
 					)}
 				</form>
 			</div>
