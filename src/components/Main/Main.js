@@ -51,6 +51,13 @@ function Main() {
 		}
 	};
 
+	const logout = () => {
+		window.localStorage.removeItem("token");
+		setUser("logged out");
+		setCloset([]);
+		console.log("logged out");
+	};
+
 	return (
 		<Switch>
 			<Route exact path="/">
@@ -77,7 +84,7 @@ function Main() {
 			</Route>
 
 			<Route path="/closet">
-				<AuthedNav user={user} />
+				<AuthedNav user={user} logout={logout} />
 				<Search
 					closet={closet}
 					setCloset={setCloset}

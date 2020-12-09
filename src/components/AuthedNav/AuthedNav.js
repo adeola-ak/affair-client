@@ -3,11 +3,16 @@ import "./AuthedNav.css";
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import { Link } from "react-router-dom";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-const AuthedNav = ({ user }) => {
+const AuthedNav = ({ user, logout }) => {
 	const [click, setClick] = useState(false);
 	const handleClick = () => setClick(!click);
-	const closeMobileMenu = () => setClick(false);
+
+	const closeMobileMenu = () => {
+		setClick(false);
+		logout();
+	};
 
 	return (
 		<div className="header">
@@ -31,28 +36,34 @@ const AuthedNav = ({ user }) => {
 						className="option mobile-option"
 						onClick={closeMobileMenu}
 					>
-						{/* <Link to="login" className="option-signin-mobile">
-							<b>SIGN-IN</b>
-						</Link> */}
+						<Link to="/comingsoon" className="signup-btn">
+							&nbsp;
+							{user.username}
+						</Link>
 					</li>
 
 					<li
 						className="option mobile-option"
 						onClick={closeMobileMenu}
 					>
-						<Link to="/comingsoon" className="signup-btn">
-							{user.name.toUpperCase()}'S PROFILE
+						<Link to="/" className="option-signin-mobile">
+							<b>LOGOUT</b>
 						</Link>
 					</li>
 				</ul>
 			</div>
 			<ul className="signin-up">
-				{/* <li className="sign-in" onClick={closeMobileMenu}>
-					<Link to="login">SIGN IN</Link>
-				</li> */}
 				<li onClick={closeMobileMenu}>
 					<Link to="/comingsoon" className="signup-btn">
-						{user.name.toUpperCase()}'S PROFILE
+						<i class="far fa-user"></i>
+						&nbsp;
+						{user.username}
+					</Link>
+				</li>
+
+				<li className="sign-in" onClick={closeMobileMenu}>
+					<Link to="/">
+						<b>LOGOUT</b>
 					</Link>
 				</li>
 			</ul>
