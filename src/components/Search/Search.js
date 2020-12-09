@@ -6,13 +6,20 @@ import Button from "@material-ui/core/Button";
 
 const Search = ({
 	closet,
-	setCloset,
 	handleInputSubmit,
 	searchInput,
 	inputTextHandler,
 	user,
+	authData,
+	hideButton,
+	setHideButton,
 }) => {
 	console.log(closet);
+
+	const displayNone = () => {
+		authData();
+		setHideButton(true);
+	};
 
 	return closet.length > 0 ? (
 		<>
@@ -30,8 +37,7 @@ const Search = ({
 					<input
 						// style={BarStyling}
 						value={searchInput}
-						its
-						placeholder={"search your closet"}
+						placeholder="search for items by description"
 						onChange={inputTextHandler}
 					/>
 					<Button
@@ -39,10 +45,8 @@ const Search = ({
 						color="primary"
 						value="Search"
 						type="submit"
-
-						// onClick={handleClickOpen}
 					>
-						Search
+						search
 					</Button>
 
 					{/* <input
@@ -53,9 +57,24 @@ const Search = ({
 					/> */}
 				</form>
 			</div>
+			{hideButton ? (
+				""
+			) : (
+				<div className="full-closet-button">
+					<Button
+						variant="outlined"
+						color="primary"
+						value="Search"
+						onClick={displayNone}
+						borderColor="#FFFFFF"
+					>
+						return to full closet
+					</Button>
+				</div>
+			)}
 		</>
 	) : (
-		<p className="loading">loading closet...</p>
+		<p className="loading">loading closet . . .</p>
 	);
 };
 

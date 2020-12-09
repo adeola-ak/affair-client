@@ -11,7 +11,8 @@ import Search from "../Search/Search";
 function Main() {
 	const [closet, setCloset] = useState("");
 	const [user, setUser] = useState("");
-	const [searchInput, setSearchInput] = useState("");
+	let [searchInput, setSearchInput] = useState("");
+	let [hideButton, setHideButton] = useState("true");
 
 	const authData = () => {
 		fetch("https://aa-affair.herokuapp.com/items", {
@@ -35,19 +36,20 @@ function Main() {
 	};
 
 	const handleInputSubmit = (event) => {
-		console.log("hello");
+		console.log(searchInput);
 		event.preventDefault();
-		if (searchInput.length > 0) {
-			setCloset(
-				closet.filter(
-					(item) =>
-						item.description.toLowerCase() ===
-						searchInput.toLowerCase()
-				)
-			);
-			console.log("submitted");
-		} else {
-			setCloset(closet);
+		let searchedCloset = [];
+		for (let i = 0; i < closet.length; i++) {
+			let closetItemDescription = closet[i].description;
+			closetItemDescription = closetItemDescription.toLowerCase();
+			searchInput = searchInput.toLowerCase();
+			if (closetItemDescription.includes(searchInput)) {
+				searchedCloset.push(closet[i]);
+				setCloset(searchedCloset);
+				setHideButton(!hideButton);
+			} else {
+				console.log("no items matching this description");
+			}
 		}
 	};
 
@@ -87,11 +89,13 @@ function Main() {
 				<AuthedNav user={user} logout={logout} />
 				<Search
 					closet={closet}
-					setCloset={setCloset}
 					handleInputSubmit={handleInputSubmit}
 					searchInput={searchInput}
 					inputTextHandler={inputTextHandler}
 					user={user}
+					authData={authData}
+					hideButton={hideButton}
+					setHideButton={setHideButton}
 				/>
 				<Closet
 					authData={authData}

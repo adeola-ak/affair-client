@@ -3,14 +3,7 @@ import { Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import "./Login.css";
 
-const Login = ({
-	authData,
-	handleLogin,
-	userData,
-	setUserData,
-	closet,
-	makeUserProfile,
-}) => {
+const Login = ({ authData, closet, makeUserProfile }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 

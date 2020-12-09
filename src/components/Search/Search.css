@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap");
 
 .greeting {
 	display: flex;
@@ -38,12 +39,29 @@
 }
 
 .loading {
-	margin: auto;
+	text-align: center;
+	margin-top: 200px;
 	font-size: 80px;
+	font-family: "Nothing You Could Do", cursive;
 }
 
+.full-closet-button {
+	margin-left: 79%;
+	border: none;
+}
+
+.full-closet-button :hover {
+	color: gold;
+}
 @media (max-width: 648px) {
 	.greeting h2 {
 		font-size: 32px;
+	}
+
+	.loading {
+		text-align: center;
+		margin-top: 200px;
+		font-size: 50px;
+		font-family: "Nothing You Could Do", cursive;
 	}
 }

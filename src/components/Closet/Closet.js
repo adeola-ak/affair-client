@@ -80,7 +80,11 @@ const Closet = ({ closet, authData, user }) => {
 			return (
 				<Card
 					className={classes.root}
-					style={{ width: "200px", marginBottom: "40px" }}
+					style={{
+						width: "200px",
+						marginBottom: "40px",
+						margin: "7px",
+					}}
 				>
 					<CardActionArea>
 						<img
@@ -168,7 +172,7 @@ const Closet = ({ closet, authData, user }) => {
 		});
 	}
 
-	return (
+	return closet.length > 0 ? (
 		<>
 			<div className="closet">
 				<div className="add-an-item">
@@ -191,6 +195,8 @@ const Closet = ({ closet, authData, user }) => {
 				<div className="clothes-container">{fullCloset}</div>
 			</div>
 		</>
+	) : (
+		<div className="clothes-container">{fullCloset}</div>
 	);
 };
 
