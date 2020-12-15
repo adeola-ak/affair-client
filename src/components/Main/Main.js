@@ -55,7 +55,7 @@ function Main() {
 
 	const logout = () => {
 		window.localStorage.removeItem("token");
-		setUser("logged out");
+		setUser("");
 		setCloset([]);
 		console.log("logged out");
 	};
@@ -73,6 +73,7 @@ function Main() {
 					authData={authData}
 					closet={closet}
 					makeUserProfile={makeUserProfile}
+					logout={logout}
 				/>
 			</Route>
 
@@ -82,6 +83,7 @@ function Main() {
 					authData={authData}
 					closet={closet}
 					makeUserProfile={makeUserProfile}
+					logout={logout}
 				/>
 			</Route>
 
