@@ -6,6 +6,16 @@ AFFAIR is an application created with the purpose of making managing ones' close
 
 [Live Site](https://affaircloset.netlify.app/)
 
+# Pending Features
+
+This project is still being built. You can soon expect to see...
+
+1. User Profiles/ Viewing other users that are Public
+
+2. Drop down filtering for searching items by color and season
+
+3. Upload items directly from device without URL
+
 ## Available Scripts
 
 In the project directory, you can run:
