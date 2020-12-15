@@ -1,9 +1,9 @@
 # AFFAIR
 
-### AFFAIR is an application created with the purpose of making managing ones' closet an easier task. AFFAIR is meant to reduce the number of times you purchase an item you may need for an event that you forgot you already have right at home. Search your closet by key words from the description you added at upload, delete items you no longer own, favorite items and more.
+AFFAIR is an application created with the purpose of making managing ones' closet an easier task. AFFAIR is meant to reduce the number of times you purchase an item you may need for an event that you forgot you already have right at home. Search your closet by key words from the description you added at upload, delete items you no longer own, favorite items and more.
 
-[Backend Repo]("https://github.com/adeola-ak/affair-api")
-[LiveSite]("https://affaircloset.netlify.app/")
+[Backend Repo](https://github.com/adeola-ak/affair-api)
+[LiveSite](https://affaircloset.netlify.app/)
 
 ## Available Scripts
 
