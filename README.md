@@ -10,11 +10,15 @@ AFFAIR is an application created with the purpose of making managing ones' close
 
 This project is still being built. You can soon expect to see...
 
-1. User Profiles/ Viewing other users that are Public
+1. Username/password error alerts
 
-2. Drop down filtering for searching items by color and season
+2. Removing case sensitivity for username
 
-3. Upload items directly from device without URL
+3. User Profiles/ Viewing other users that are Public
+
+4. Drop down filtering for searching items by color and season
+
+5. Upload items directly from device without URL
 
 ## Available Scripts
 
