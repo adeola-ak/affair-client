@@ -4,7 +4,7 @@ AFFAIR is an application created with the purpose of making managing ones' close
 
 [Backend Repo](https://github.com/adeola-ak/affair-api)
 
-[LiveSite](https://affaircloset.netlify.app/)
+[Live Site](https://affaircloset.netlify.app/)
 
 ## Available Scripts
 
