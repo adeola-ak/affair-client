@@ -23,31 +23,29 @@ const Nav = () => {
 					<li className="option" onClick={closeMobileMenu}>
 						<Link to="/contact">contact</Link>
 					</li>
-					{/* <li className="option" onClick={closeMobileMenu}>
-						<Link to="/blog">blog</Link>
-					</li> */}
 
 					<li
 						className="option mobile-option"
 						onClick={closeMobileMenu}
 					>
-						{/* <a href="/login" className="sign-up">
-							SIGN-IN
-						</a> */}
 						<Link to="login" className="option-signin-mobile">
 							<b>SIGN-IN</b>
 						</Link>
 					</li>
-
 					<li
 						className="option mobile-option"
 						onClick={closeMobileMenu}
 					>
-						{/* <a href="/new-user" className="sign-up">
-							SIGN-UP
-						</a> */}
-						<Link to="new-user" className="signup-btn">
-							SIGN-UP
+						<Link
+							to="new-user"
+							className="option-signin-mobile"
+							style={{
+								backgroundColor: "gold",
+								borderRadius: "3px",
+								padding: "7px",
+							}}
+						>
+							<b>SIGN-UP</b>
 						</Link>
 					</li>
 				</ul>
@@ -55,12 +53,8 @@ const Nav = () => {
 			<ul className="signin-up">
 				<li className="sign-in" onClick={closeMobileMenu}>
 					<Link to="login">SIGN IN</Link>
-					{/* <a href="/login">SIGN-IN</a> */}
 				</li>
 				<li onClick={closeMobileMenu}>
-					{/* <a href="/new-user" className="signup-btn">
-						SIGN-UP
-					</a> */}
 					<Link to="/new-user" className="signup-btn">
 						SIGN-UP
 					</Link>

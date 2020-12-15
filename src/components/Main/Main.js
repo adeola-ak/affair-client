@@ -23,7 +23,6 @@ function Main() {
 			.then((resp) => resp.json())
 			.then((data) => {
 				setCloset(data);
-				console.log(closet);
 			});
 	};
 
@@ -36,7 +35,6 @@ function Main() {
 	};
 
 	const handleInputSubmit = (event) => {
-		console.log(searchInput);
 		event.preventDefault();
 		let searchedCloset = [];
 		for (let i = 0; i < closet.length; i++) {
@@ -57,7 +55,6 @@ function Main() {
 		window.localStorage.removeItem("token");
 		setUser("");
 		setCloset([]);
-		console.log("logged out");
 	};
 
 	return (

@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import axios from "axios";
 import MenuItem from "@material-ui/core/MenuItem";
-
 import { makeStyles } from "@material-ui/core/styles";
-
 import InputLabel from "@material-ui/core/InputLabel";
-import ListSubheader from "@material-ui/core/ListSubheader";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
@@ -88,7 +81,6 @@ const Modal = ({ token, user, click, setClick, createNew, id }) => {
 				year,
 			}),
 		}).then(() => setClick(!click));
-		console.log("item updated");
 	};
 
 	const handleSubmit = (event) => {
@@ -112,9 +104,7 @@ const Modal = ({ token, user, click, setClick, createNew, id }) => {
 				year,
 			}),
 		})
-			.then(() => {
-				console.log("new item added");
-			})
+			.then(() => {})
 			.then(() => setClick(!click));
 		setDesigner("");
 		setItem_type("");

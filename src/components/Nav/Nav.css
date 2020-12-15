@@ -75,16 +75,6 @@
 .sign-in :hover {
 	text-decoration: underline;
 }
-.signup-btn {
-	padding: 10px 10px;
-	height: 2.4rem;
-	border-radius: 3px;
-	background: gold;
-	color: black;
-	cursor: pointer;
-	align-items: center;
-	margin-right: 30px;
-}
 
 .mobile-menu {
 	display: none;

@@ -3,7 +3,6 @@ import "./AuthedNav.css";
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 const AuthedNav = ({ user, logout }) => {
 	const [click, setClick] = useState(false);
@@ -37,8 +36,11 @@ const AuthedNav = ({ user, logout }) => {
 						onClick={closeMobileMenu}
 					>
 						<Link to="/comingsoon" className="signup-btn">
-							&nbsp;
-							{user.username}
+							<i class="far fa-user"></i>
+							<b>
+								&nbsp;
+								{user.username}
+							</b>
 						</Link>
 					</li>
 
@@ -56,8 +58,10 @@ const AuthedNav = ({ user, logout }) => {
 				<li onClick={closeMobileMenu}>
 					<Link to="/comingsoon" className="signup-btn">
 						<i class="far fa-user"></i>
-						&nbsp;
-						{user.username}
+						<b>
+							&nbsp;
+							{user.username}
+						</b>
 					</Link>
 				</li>
 
@@ -74,7 +78,6 @@ const AuthedNav = ({ user, logout }) => {
 						className="menu-icon"
 						color="inherit"
 						fontSize="large"
-						color="inherit"
 					/>
 				) : (
 					<MenuIcon

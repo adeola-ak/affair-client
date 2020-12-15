@@ -19,8 +19,6 @@ const Closet = ({ closet, authData, user }) => {
 
 	useEffect(() => authData(), [click]);
 	// useEffect(() => alert("welcome back `${user.name}`"));
-	console.log(closet);
-
 	const closetItemsStyle = {
 		height: "8em",
 	};
@@ -35,7 +33,6 @@ const Closet = ({ closet, authData, user }) => {
 		})
 			// handleAuth();
 			.then(() => setClick(!click));
-		console.log("item deleted");
 	};
 
 	const faveTrue = (item) => {
@@ -48,7 +45,6 @@ const Closet = ({ closet, authData, user }) => {
 			data: { favorite: true },
 		}).then(() => setClick(!click));
 		setFavorite(true);
-		console.log("item favorited");
 	};
 
 	const faveFalse = (item) => {
@@ -61,7 +57,6 @@ const Closet = ({ closet, authData, user }) => {
 			data: { favorite: false },
 		}).then(() => setClick(!click));
 		setFavorite(false);
-		console.log("item un-favorited");
 	};
 
 	const useStyles = makeStyles({
