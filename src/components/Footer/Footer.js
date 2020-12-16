@@ -13,7 +13,7 @@ const Footer = () => {
 
 					<li>link 3</li> */}
 				</div>
-				<div>© 2020 Adeola Akinsiku</div>
+				<div>Adeola Akinsiku © 2020</div>
 			</footer>
 		</>
 	);
