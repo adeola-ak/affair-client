@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import DarkMode from "../DarkMode/DarkMode";
 import "./Search.css";
 import Button from "@material-ui/core/Button";
@@ -36,6 +35,7 @@ const Search = ({
 				<form id="form" onSubmit={handleInputSubmit}>
 					<input
 						// style={BarStyling}
+						style={{ width: "235px" }}
 						value={searchInput}
 						placeholder="search for items by description"
 						onChange={inputTextHandler}
@@ -48,13 +48,6 @@ const Search = ({
 					>
 						search
 					</Button>
-
-					{/* <input
-						// style={BarStyling}
-						className=""
-						type="submit"
-						value="Search"
-					/> */}
 				</form>
 			</div>
 			{hideButton ? (
